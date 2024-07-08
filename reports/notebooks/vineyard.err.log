@@ -1,0 +1,106 @@
+Traceback (most recent call last):
+  File "C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\nbclient\client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\jupyter_core\utils\__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import importlib.util
+ 
+# specify the module that needs to be 
+# imported relative to the path of the 
+# module
+
+
+from edcrop import edcrop
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
+wdir = os.path.join(os.path.dirname(os.getcwd()))
+
+os.chdir(os.path.join(wdir, 'data/vineyard/'))
+
+yaml = 'edcrop.yaml'
+
+edcrop.run_model(yaml=yaml)
+------------------
+
+----- stdout -----
+
+Running edcrop version 0.0.6
+
+Read input file edcrop.yaml.
+
+Loop through simulations.
+
+ Climate data file: Weatherdata_S1.edcrop_wf.
+----- stdout -----
+
+ Soil parameter values:  use default.
+----- stderr -----
+C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py:354: SyntaxWarning: invalid escape sequence '\s'
+  sep='\s+|,\s*|;\s*', engine='python')
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mException[0m                                 Traceback (most recent call last)
+File [1;32m~\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py:1353[0m, in [0;36mCropParameters.initialize[1;34m(self, ctype, cval, ts, sd, fl)[0m
+[0;32m   1352[0m [38;5;28;01melse[39;00m:
+[1;32m-> 1353[0m     [38;5;28;01mraise[39;00m [38;5;167;01mException[39;00m
+[0;32m   1354[0m crop_type [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mcrop_type
+
+[1;31mException[0m: 
+
+During handling of the above exception, another exception occurred:
+
+[1;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[1], line 21[0m
+[0;32m     17[0m os[38;5;241m.[39mchdir(os[38;5;241m.[39mpath[38;5;241m.[39mjoin(wdir, [38;5;124m'[39m[38;5;124mdata/vineyard/[39m[38;5;124m'[39m))
+[0;32m     19[0m yaml [38;5;241m=[39m [38;5;124m'[39m[38;5;124medcrop.yaml[39m[38;5;124m'[39m
+[1;32m---> 21[0m [43medcrop[49m[38;5;241;43m.[39;49m[43mrun_model[49m[43m([49m[43myaml[49m[38;5;241;43m=[39;49m[43myaml[49m[43m)[49m
+
+File [1;32m~\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py:2969[0m, in [0;36mrun_model[1;34m(yaml, log)[0m
+[0;32m   2967[0m     [38;5;28;01mcontinue[39;00m
+[0;32m   2968[0m [38;5;28;01mfor[39;00m crop [38;5;129;01min[39;00m crops:
+[1;32m-> 2969[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [43mcd[49m[38;5;241;43m.[39;49m[43mread_initialize[49m[43m([49m[43mcrop[49m[43m,[49m[43m [49m[43mcrops[49m[43m[[49m[43mcrop[49m[43m][49m[43m,[49m[43m [49m[43mts[49m[43m,[49m[43m [49m
+[0;32m   2970[0m [43m                              [49m[43msd[49m[43m,[49m[43m [49m[43mfl[49m[43m)[49m:
+[0;32m   2971[0m         [38;5;28;01mcontinue[39;00m
+[0;32m   2972[0m     [38;5;28;01mfor[39;00m model [38;5;129;01min[39;00m models:
+
+File [1;32m~\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py:1620[0m, in [0;36mCropParameters.read_initialize[1;34m(self, ctype, cval, ts, sd, fl)[0m
+[0;32m   1605[0m [38;5;28;01mdef[39;00m [38;5;21mread_initialize[39m([38;5;28mself[39m, ctype, cval, ts, sd, fl):
+[0;32m   1606[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[0;32m   1607[0m [38;5;124;03m    Initialize crop parameter values in self.initialize(); [39;00m
+[0;32m   1608[0m [38;5;124;03m    if specified by parameter key in input dictionary sval, replace [39;00m
+[1;32m   (...)[0m
+[0;32m   1617[0m [38;5;124;03m    called from run_model().[39;00m
+[0;32m   1618[0m [38;5;124;03m    """[39;00m
+[1;32m-> 1620[0m     [38;5;28;01mif[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43minitialize[49m[43m([49m[43mctype[49m[43m,[49m[43m [49m[43mcval[49m[43m,[49m[43m [49m[43mts[49m[43m,[49m[43m [49m[43msd[49m[43m,[49m[43m [49m[43mfl[49m[43m)[49m:
+[0;32m   1621[0m         crop_type [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mcrop_type
+[0;32m   1622[0m         [38;5;28;01mif[39;00m cval [38;5;241m!=[39m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m [38;5;124m'[39m[38;5;124mcroptype[39m[38;5;124m'[39m [38;5;129;01min[39;00m cval[38;5;241m.[39mkeys():
+
+File [1;32m~\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py:1602[0m, in [0;36mCropParameters.initialize[1;34m(self, ctype, cval, ts, sd, fl)[0m
+[0;32m   1598[0m     [38;5;28;01mreturn[39;00m([38;5;28;01mTrue[39;00m)
+[0;32m   1600[0m [38;5;28;01mexcept[39;00m:
+[0;32m   1601[0m     print_msg(([38;5;124m"[39m[38;5;124mError: Crop type = [39m[38;5;132;01m%s[39;00m[38;5;124m cannot be recognized.[39m[38;5;124m"[39m
+[1;32m-> 1602[0m                [38;5;241m+[39m [38;5;124;43m"[39;49m[38;5;124;43m Loop to next![39;49m[38;5;124;43m"[39;49m[38;5;241;43m%[39;49m[43m([49m[43mctype[49m[43m)[49m), fl)
+[0;32m   1603[0m     [38;5;28;01mreturn[39;00m([38;5;28;01mFalse[39;00m)
+
+[1;31mTypeError[0m: not all arguments converted during string formatting
+
