@@ -1,15 +1,8 @@
 # Tables of input and output
 
-
-|'key'|]Model parameter c.f. Ch. 1|Description|
-|---|]---|---|
-|wbfunc|]   |   |
-|stepsperday|]   |   |
-|Cr|]$C_r$|Initial capacity of root zone to hold water. FPN.|
-
 | `key`          | Model parameter c.f. Ch. 1 | Description                                                                                                     |
 |----------------|----------------------------|-----------------------------------------------------------------------------------------------------------------|
-| wbfunc         |                            | A string specifying which water balance function to use. 'value' must be ed or evacrop; default is ed.         |
+| wbfunc         |                            | A string specifying which water balance function to use. 'value' must be ed or evacrop; default is ed.          |
 | stepsperday    |                            | Number of time steps per day that is used when wbfunc = ed. 'value' must be an integer larger than 0.           |
 | Cr             | \( C_r \)                  | Initial capacity of root zone to hold water. **FPN**.                                                           |
 | Cb             | \( C_b \)                  | Initial capacity of subzone to hold water. **FPN**.                                                             |
@@ -33,8 +26,22 @@
 | autoirrigate   |                            | A boolean specifying whether to simulate irrigation automatically. 'value' must be false or true; default is false.|
 | tlim           | \( t_{lim} \)              | The irrigation time limit in days with respect to maturing. An integer value.                                   |
 | tfreq          | \( t_{freq} \)             | Minimum number of days between automatic irrigation. 'value' must be positive integer.                          |
+| clim           | \( c_{lim} \)              | Factor limiting water content requiring automatic irrigation. **FPN**.                                          |
+| Plim           | \( P_{lim} \)              | Precipitation limit for automatic irrigation. **FPN**.                                                          |
+| Imin           | \( I_{min} \)              | Minimum amount of automatic irrigation. **FPN**.                                                                |
+| Imax           | \( I_{max} \)              | Maximum amount of automatic irrigation. **FPN**.                                                                |
+| iprnd          |                            | 'value' must be integer 1, 2, 3, or 4; default is 1. Specifies predefined list of time series variables for writing daily and yearly outputs to print files. The higher number, the more variables are output. |
+| prlistd        |                            | Text string of time series variables for writing of daily output to print file. In the string, a space character must separate two variable names. |
+| prlisty        |                            | Text string of time series variables for writing of yearly output to print file. In the string, a space character must separate two variable names. |
+| plotseries     |                            | Specifies whether to make plots of simulation output. 'value' must be yes or no; default is no.                 |
 
-**Notes:**
 
-1) The dates should be provided in the format YYYY-MM-DD.
-2) Ensure that the dates fall within the simulation period.
+| Soil type `key` | Soil description            | Clay < 2 µm | Silt 2-20 µm | Fine sand 20-200 µm | Total sand 20-2000 µm |
+|-----------------|-----------------------------|-------------|--------------|---------------------|-----------------------|
+| JB1             | Coarse sandy                | 0-5 %       | 0-20 %       | 0-50 %              | 75-100 %              |
+| JB2             | Fine sandy                  | 0-5 %       | 0-20 %       | 50-100 %            |                       |
+| JB3             | Coarse sandy with clay      | 5-10 %      | 0-25 %       | 0-40 %              | 65-95 %               |
+| JB4             | Fine sandy with mix of clay | 10-15 %     | 0-30 %       | 40-95 %             |                       |
+| JB5             | Clayey with coarse sand     | 10-15 %     | 0-30 %       | 0-40 %              | 55-90 %               |
+| JB6             | Clayey with fine sand       | 10-15 %     | 0-30 %       | 40-90 %             |                       |
+| JB7             | Clayey                      | 15-25 %     | 0-35 %       |                     | 40-85 %               |
