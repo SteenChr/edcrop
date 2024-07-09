@@ -1,0 +1,18 @@
+Soils:
+ JB1:
+
+Crops:
+  BS:
+  WL:
+
+
+Climates:
+ Station1:
+  filename: Weatherdata_S1.edcrop_wf
+
+Models:
+ ed:
+   wbfunc: 'ed'
+   prlistd:  Date T P Ep I Ea Dsum Db Dmp
+   prlisty:  P Ep I Ea Dsum Db Dmp
+   plotseries: no

@@ -1,0 +1,34 @@
+
+
+Running edcrop version 0.0.6
+
+Read input file edcrop.yaml.
+
+Loop through simulations.
+
+ Climate data file: Weatherdata_S1.edcrop_wf.
+
+ Soil parameter values:  use default.
+
+ Crop parameter values:  use default.
+
+ Model parameter values:  update from input file.
+  ed:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp
+    prlisty: P Ep I Ea Dsum Db Dmp
+    wbfunc: ed
+    
+===> Run Station1_JB1_BS_ed
+
+
+ Crop parameter values:  use default.
+
+ Model parameter values:  update from input file.
+  ed:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp
+    prlisty: P Ep I Ea Dsum Db Dmp
+    wbfunc: ed
+    
+===> Run Station1_JB1_WL_ed
