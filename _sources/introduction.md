@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 Evapotranspiration is one of the major components of Earth’s water balance, being the sum of evaporation and plant transpiration from the land and ocean surface. Factors that affect evapotranspiration includes solar radiation, wind, humidity, temperature, growth stage of vegetation, and water availability. The latter depends on factors such as precipitation, irrigation, and soil characteristics.
 
