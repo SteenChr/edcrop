@@ -30,3 +30,8 @@ html:
 sphinx:
   config:
     html_show_copyright: false
+
+
+plugins:
+  - jekyll-include-cache
+  - gemfile

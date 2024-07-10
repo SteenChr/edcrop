@@ -58,8 +58,8 @@ C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.p
   sep='\s+|,\s*|;\s*', engine='python')
 ------------------
 
-[1;31m---------------------------------------------------------------------[0m
-[1;31mException[0m                           Traceback (most recent call last)
+[1;31m-------------------------------------------------------------------------[0m
+[1;31mException[0m                               Traceback (most recent call last)
 File [1;32m~\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py:1353[0m, in [0;36mCropParameters.initialize[1;34m(self, ctype, cval, ts, sd, fl)[0m
 [0;32m   1352[0m [38;5;28;01melse[39;00m:
 [1;32m-> 1353[0m     [38;5;28;01mraise[39;00m [38;5;167;01mException[39;00m
@@ -69,7 +69,7 @@ File [1;32m~\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py
 
 During handling of the above exception, another exception occurred:
 
-[1;31mTypeError[0m                           Traceback (most recent call last)
+[1;31mTypeError[0m                               Traceback (most recent call last)
 Cell [1;32mIn[1], line 21[0m
 [0;32m     17[0m os[38;5;241m.[39mchdir(os[38;5;241m.[39mpath[38;5;241m.[39mjoin(wdir, [38;5;124m'[39m[38;5;124mdata/vineyard/[39m[38;5;124m'[39m))
 [0;32m     19[0m yaml [38;5;241m=[39m [38;5;124m'[39m[38;5;124medcrop.yaml[39m[38;5;124m'[39m
