@@ -184,7 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation and Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../inputs.html">Input Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../outputs.html">Output files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tables.html">Tables of input and output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tables.html">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks-collection.html">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
 </ul>
@@ -486,34 +486,36 @@ Loop through simulations.
 ===&gt; Run Station1_JB7_WW_ed
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\pamcl\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py:354: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-  sep=&#39;\s+|,\s*|;\s*&#39;, engine=&#39;python&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Model parameter values:  update from input file.
+  Evacrop:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    wbfunc: evacrop
+    
+===&gt; Run Station1_JB7_WW_Evacrop
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">-------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">21</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wdir</span><span class="p">,</span> <span class="s1">&#39;data/quick_start/&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">yaml</span> <span class="o">=</span> <span class="s1">&#39;edcrop.yaml&#39;</span>
-<span class="ne">---&gt; </span><span class="mi">21</span> <span class="n">edcrop</span><span class="o">.</span><span class="n">run_model</span><span class="p">(</span><span class="n">yaml</span><span class="o">=</span><span class="n">yaml</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Crop parameter values:  use default.
 
-<span class="nn">File ~\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py:2991,</span> in <span class="ni">run_model</span><span class="nt">(yaml, log)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2989</span>     <span class="n">month</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">date</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">month</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="g g-Whitespace">   </span><span class="mi">2990</span>     <span class="n">cb</span> <span class="o">=</span> <span class="n">cd</span><span class="o">.</span><span class="n">cb</span><span class="p">[</span><span class="n">month</span><span class="p">]</span>
-<span class="ne">-&gt; </span><span class="mi">2991</span>     <span class="n">mp</span><span class="o">.</span><span class="n">wbfunc</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">sd</span><span class="o">.</span><span class="n">thf</span><span class="p">,</span> <span class="n">cb</span><span class="p">,</span> <span class="n">sd</span><span class="o">.</span><span class="n">kqr</span><span class="p">,</span> <span class="n">sd</span><span class="o">.</span><span class="n">kqb</span><span class="p">,</span> <span class="n">cd</span><span class="p">,</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2992</span>               <span class="n">i</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2994</span> <span class="c1"># Write and plot output</span>
-<span class="g g-Whitespace">   </span><span class="mi">2995</span> <span class="n">begin_name</span> <span class="o">=</span> <span class="p">(</span><span class="n">clim</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">soil</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">crop</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2996</span>               <span class="o">+</span> <span class="n">model</span><span class="p">)</span>
-
-<span class="nn">File ~\WPy64-31230\python-3.12.3.amd64\Lib\site-packages\edcrop\edcrop.py:581,</span> in <span class="ni">TimeSeries.watbal_ed_step</span><span class="nt">(self, mp, thf, cb, kqr, kqb, cd, i)</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span> <span class="c1"># Update varaibles at end of time step</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span> <span class="n">mp</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">V0</span>
-<span class="ne">--&gt; </span><span class="mi">581</span> <span class="n">VSoil</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">582</span> <span class="n">mp</span><span class="o">.</span><span class="n">Vr</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">root_zone_water</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">V</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">zr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">583</span> <span class="n">mp</span><span class="o">.</span><span class="n">Vb</span> <span class="o">=</span> <span class="n">VSoil</span> <span class="o">-</span> <span class="n">mp</span><span class="o">.</span><span class="n">Vr</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+ Model parameter values:  update from input file.
+  ed:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp
+    prlisty: P Ep I Ea Dsum Db Dmp
+    wbfunc: ed
+    
+===&gt; Run Station1_JB7_WM_ed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Model parameter values:  update from input file.
+  Evacrop:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    wbfunc: evacrop
+    
+===&gt; Run Station1_JB7_WM_Evacrop
 </pre></div>
 </div>
 </div>
