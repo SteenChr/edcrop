@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tables of input and output &#8212; Edcrop</title>
+    <title>Tables &#8212; Edcrop</title>
   
   
   
@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tables';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -184,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputs.html">Input Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputs.html">Output files</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tables of input and output</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks-collection.html">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="citations.html">Citations</a></li>
 </ul>
@@ -359,7 +361,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -370,11 +374,25 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tables of input and output</h1>
+    <h1>Tables</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">Inputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soil-types-and-parameters">Soil types and parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-types-and-parameters">Vegetation types and parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-variables">Output Variables</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -384,12 +402,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tables-of-input-and-output">
-<h1>Tables of input and output<a class="headerlink" href="#tables-of-input-and-output" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tables">
+<h1>Tables<a class="headerlink" href="#tables" title="Link to this heading">#</a></h1>
+<section id="inputs">
+<h2>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h2>
+<section id="model-parameters">
+<h3>Model Parameters<a class="headerlink" href="#model-parameters" title="Link to this heading">#</a></h3>
+<p>The following table supplement the model parameter input description in <a class="reference internal" href="inputs.html"><span class="doc">Input Files</span></a>.</p>
+<p><strong>Table 6</strong> Model parameters for which ‘value’ can be specified by use of ’key’ in the “Models” block of the edcrop.yaml input file. Notice that ‘key’ is a case sensitive name. FPN is short for ‘floating point number’.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></th>
-<th class="head"><p>Model parameter c.f. Ch. 1</p></th>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Model parameter</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
@@ -403,108 +427,108 @@ document.write(`
 <td><p>Number of time steps per day that is used when wbfunc = ed. ‘value’ must be an integer larger than 0.</p></td>
 </tr>
 <tr class="row-even"><td><p>Cr</p></td>
-<td><p>( C_r )</p></td>
-<td><p>Initial capacity of root zone to hold water. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_r\)</span></p></td>
+<td><p>Initial capacity of root zone to hold water. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Cb</p></td>
-<td><p>( C_b )</p></td>
-<td><p>Initial capacity of subzone to hold water. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_b\)</span></p></td>
+<td><p>Initial capacity of subzone to hold water. FPN.</p></td>
 </tr>
 <tr class="row-even"><td><p>Cu</p></td>
-<td><p>( C_u )</p></td>
-<td><p>Initial capacity of upper root zone. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_u\)</span></p></td>
+<td><p>Initial capacity of upper root zone. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Vs</p></td>
-<td><p>( V_s )</p></td>
-<td><p>Initial water content of snow reservoir. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_s\)</span></p></td>
+<td><p>Initial water content of snow reservoir. FPN.</p></td>
 </tr>
 <tr class="row-even"><td><p>Vr</p></td>
-<td><p>( V_r )</p></td>
-<td><p>Initial water content of root zone. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_r\)</span></p></td>
+<td><p>Initial water content of root zone. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Vb</p></td>
-<td><p>( V_b )</p></td>
-<td><p>Initial water content of subzone. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_b\)</span></p></td>
+<td><p>Initial water content of subzone. FPN.</p></td>
 </tr>
 <tr class="row-even"><td><p>Ve</p></td>
-<td><p>( V_e )</p></td>
-<td><p>Initial water content of evaporation zone. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_e\)</span></p></td>
+<td><p>Initial water content of evaporation zone. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Vu</p></td>
-<td><p>( V_u )</p></td>
-<td><p>Initial water content of upper root zone. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_u\)</span></p></td>
+<td><p>Initial water content of upper root zone. FPN.</p></td>
 </tr>
 <tr class="row-even"><td><p>VI</p></td>
-<td><p>( V_I )</p></td>
-<td><p>Initial content of intercepted water. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_I\)</span></p></td>
+<td><p>Initial content of intercepted water. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ci</p></td>
-<td><p>( c_i )</p></td>
-<td><p>Interception capacity constant. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_i\)</span></p></td>
+<td><p>Interception capacity constant. FPN.</p></td>
 </tr>
 <tr class="row-even"><td><p>cm</p></td>
-<td><p>( c_m )</p></td>
-<td><p>Degree day factor for snow melt. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_m\)</span></p></td>
+<td><p>Degree day factor for snow melt. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Tm</p></td>
-<td><p>( T_m )</p></td>
-<td><p>Threshold temperature for snow melt. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(T_m\)</span></p></td>
+<td><p>Threshold temperature for snow melt. FPN.</p></td>
 </tr>
 <tr class="row-even"><td><p>ce</p></td>
-<td><p>( c_e )</p></td>
-<td><p>Evaporation factor for dry soil. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_e\)</span></p></td>
+<td><p>Evaporation factor for dry soil. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>kp</p></td>
-<td><p>( k_p )</p></td>
-<td><p>Extinction coefficient. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(k_p\)</span></p></td>
+<td><p>Extinction coefficient. FPN.</p></td>
 </tr>
 <tr class="row-even"><td><p>zmax</p></td>
-<td><p>( z_{max} )</p></td>
-<td><p>Depth of simulated soil profile. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(z_{max}\)</span></p></td>
+<td><p>Depth of simulated soil profile. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>winterperiod</p></td>
 <td><p></p></td>
-<td><p>A list of two dates defining beginning and end of winter, respectively. See 1) and 2).</p></td>
+<td><p>A list of two dates defining beginning and end of winter, respectively. See  1 and 2.</p></td>
 </tr>
 <tr class="row-even"><td><p>irrigationperiod</p></td>
 <td><p></p></td>
-<td><p>A list of two dates defining beginning and end of irrigation season, respectively. See 1) and 2).</p></td>
+<td><p>A list of two dates defining beginning and end of irrigation season, respectively. See 1 and 2.</p></td>
 </tr>
 <tr class="row-odd"><td><p>irrigationdate</p></td>
 <td><p></p></td>
-<td><p>A list containing dates of forced irrigation. See 1) and 2).</p></td>
+<td><p>A list containing dates of forced irrigation. See 1 and 2.</p></td>
 </tr>
 <tr class="row-even"><td><p>irrigation</p></td>
 <td><p></p></td>
-<td><p>The rate for forced irrigation. <strong>FPN</strong>.</p></td>
+<td><p>The rate for forced irrigation. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>autoirrigate</p></td>
 <td><p></p></td>
 <td><p>A boolean specifying whether to simulate irrigation automatically. ‘value’ must be false or true; default is false.</p></td>
 </tr>
 <tr class="row-even"><td><p>tlim</p></td>
-<td><p>( t_{lim} )</p></td>
+<td><p><span class="math notranslate nohighlight">\(t_{lim}\)</span></p></td>
 <td><p>The irrigation time limit in days with respect to maturing. An integer value.</p></td>
 </tr>
 <tr class="row-odd"><td><p>tfreq</p></td>
-<td><p>( t_{freq} )</p></td>
+<td><p><span class="math notranslate nohighlight">\(t_{freq}\)</span></p></td>
 <td><p>Minimum number of days between automatic irrigation. ‘value’ must be positive integer.</p></td>
 </tr>
 <tr class="row-even"><td><p>clim</p></td>
-<td><p>( c_{lim} )</p></td>
-<td><p>Factor limiting water content requiring automatic irrigation. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_{lim}\)</span></p></td>
+<td><p>Factor limiting water content requiring automatic irrigation. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Plim</p></td>
-<td><p>( P_{lim} )</p></td>
-<td><p>Precipitation limit for automatic irrigation. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(P_{lim}\)</span></p></td>
+<td><p>Precipitation limit for automatic irrigation. FPN.</p></td>
 </tr>
 <tr class="row-even"><td><p>Imin</p></td>
-<td><p>( I_{min} )</p></td>
-<td><p>Minimum amount of automatic irrigation. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{min}\)</span></p></td>
+<td><p>Minimum amount of automatic irrigation. FPN.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Imax</p></td>
-<td><p>( I_{max} )</p></td>
-<td><p>Maximum amount of automatic irrigation. <strong>FPN</strong>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{max}\)</span></p></td>
+<td><p>Maximum amount of automatic irrigation. FPN.</p></td>
 </tr>
 <tr class="row-even"><td><p>iprnd</p></td>
 <td><p></p></td>
@@ -525,9 +549,40 @@ document.write(`
 </tbody>
 </table>
 </div>
+<ol class="arabic simple">
+<li><p>A date is given in the format %Y-%m-%d; an example using this format is 2019-12-31, where first four digits give year (2019), next two digits give month (12), and last two digits give day (31).</p></li>
+<li><p>Only day and month is used, every simulated year.</p></li>
+</ol>
+<p><strong>Table 7</strong> A second example of “Models” block input in edcrop.yaml file. Two model runs, named M1 and M2, will be executed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Models</span><span class="p">:</span>
+   <span class="n">M1</span><span class="p">:</span>
+        <span class="n">wbfunc</span><span class="p">:</span> <span class="n">evacrop</span>
+        <span class="n">winterperiod</span><span class="p">:</span> <span class="p">[</span><span class="mi">1900</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">02</span><span class="p">,</span> <span class="mi">1901</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">02</span><span class="p">]</span>
+        <span class="n">irrigationperiod</span><span class="p">:</span> <span class="p">[</span><span class="mi">1900</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">02</span><span class="p">,</span> <span class="mi">1900</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">03</span><span class="p">]</span>
+        <span class="n">irrigationdate</span><span class="p">:</span> <span class="p">[</span><span class="mi">1900</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">07</span><span class="p">,</span> <span class="mi">1900</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="mi">1900</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">07</span><span class="p">,</span> <span class="mi">1900</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span><span class="p">]</span>
+        <span class="n">irrigation</span><span class="p">:</span> <span class="mf">16.</span>
+        <span class="n">iprnd</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="n">plotseries</span><span class="p">:</span> <span class="n">true</span>
+    <span class="c1"># M2 implicitly uses the default, which is wbfunc: ed</span>
+    <span class="n">M2</span><span class="p">:</span>
+        <span class="n">stepsperday</span><span class="p">:</span> <span class="mi">4</span>
+        <span class="n">autoirrigate</span><span class="p">:</span> <span class="n">true</span>
+        <span class="n">tlim</span><span class="p">:</span> <span class="mi">20</span>
+        <span class="n">tfreq</span><span class="p">:</span> <span class="mi">5</span>
+        <span class="n">clim</span><span class="p">:</span> <span class="mf">.9</span>
+        <span class="n">Plim</span><span class="p">:</span> <span class="mf">7.</span>
+        <span class="n">Imin</span><span class="p">:</span> <span class="mf">25.</span>
+        <span class="n">Imax</span><span class="p">:</span> <span class="mf">35.</span>
+        <span class="n">prlistd</span><span class="p">:</span> <span class="n">Ep</span> <span class="n">Ea</span> <span class="n">Db</span>
+</pre></div>
+</div>
+</section>
+<section id="soil-types-and-parameters">
+<h3>Soil types and parameters<a class="headerlink" href="#soil-types-and-parameters" title="Link to this heading">#</a></h3>
+<p><strong>Table 8</strong> Predefined soil types, with oral and quantitative characterization. Valid ‘key’ type names are JB1 to JB7. Notice that ‘key’ is a case sensitive name. The soil types are from Olesen and Heidmann (2002), who used the soil classification of Madsen and Holst (1987).</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Soil type <code class="docutils literal notranslate"><span class="pre">key</span></code></p></th>
+<tr class="row-odd"><th class="head"><p>Soil type Key</p></th>
 <th class="head"><p>Soil description</p></th>
 <th class="head"><p>Clay &lt; 2 µm</p></th>
 <th class="head"><p>Silt 2-20 µm</p></th>
@@ -588,6 +643,442 @@ document.write(`
 </tbody>
 </table>
 </div>
+<p><strong>Table 9</strong> Soil parameters for which ‘value’ can be specified by use of ‘key’ in the “Soils” block of the edcrop.yaml input file. Notice that ‘key’ is a case sensitive name. FPN is short for ‘floating point number’.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Model Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>soiltype</p></td>
+<td><p>A predefined soil type ‘key’ chosen from Table 8.</p></td>
+<td><p>A string.</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>A descriptive name for the soil.</p></td>
+<td><p>A string.</p></td>
+</tr>
+<tr class="row-even"><td><p>thf</p></td>
+<td><p><span class="math notranslate nohighlight">\(θ_F\)</span></p></td>
+<td><p>Plant available water content of the soil. List of four FPN’s; one value for each of four 25 cm depth intervals. (Total soil depth is 100 cm – unless the model parameter value maxz is changed.)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ce</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_e\)</span></p></td>
+<td><p>Capacity of evaporation zone. FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>kqr</p></td>
+<td><p><span class="math notranslate nohighlight">\(k_{qr}\)</span></p></td>
+<td><p>Drainage constant for root zone.</p></td>
+</tr>
+<tr class="row-odd"><td><p>kqb</p></td>
+<td><p><span class="math notranslate nohighlight">\(k_{qb}\)</span></p></td>
+<td><p>Drainage constant for sub zone. FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>Kmp</p></td>
+<td><p><span class="math notranslate nohighlight">\(K_{mp}\)</span></p></td>
+<td><p>Maximum rate of macro-pore drainage. FPN. Only used when wbfunc = ed (see Table 6)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cmp</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_{mp}\)</span></p></td>
+<td><p>Water content threshold at which macro-pore drainage is initiated. FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>Vmprel</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{mp - rel}\)</span></p></td>
+<td><p>Relative water content threshold below which macro-pore drainage can occur. FPN.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kro</p></td>
+<td><p><span class="math notranslate nohighlight">\(K_{ro}\)</span></p></td>
+<td><p>Maximum rate of surface runoff. FPN. Only used when wbfunc = ed (see Table 6).</p></td>
+</tr>
+<tr class="row-even"><td><p>thsat</p></td>
+<td><p><span class="math notranslate nohighlight">\(θ_{s,1} - θ_{r,1}\)</span></p></td>
+<td><p>Water content at which macro-pore flow is initiated. FPN. Only used when both wbfunc = ed (see Table 6) and soilmodel = lin. For soilmodel = mvg, thsat is calculated internally from water content values given for the top soil horizon.</p></td>
+</tr>
+<tr class="row-odd"><td><p>horizon</p></td>
+<td><p>name <span class="math notranslate nohighlight">\(θ_s θ_r α n K_s I\)</span></p></td>
+<td><p>Definition of soil horizon, which is a dictionary with key being name given to horizon (string) and value being a list of six Mualem – van Genuchten parameter values (FPN). Only used when both wbfunc = ed (see Table 6) and soilmodel = mvg. Definition of default horizons is in Edcrop’s SoilParameters.horizon dictionary.</p></td>
+</tr>
+<tr class="row-even"><td><p>soilhorizons</p></td>
+<td><p>Name of four horizons making the soil profile.</p></td>
+<td><p>List of four strings, where each string is the name of a soil horizon. Each horizon must either be given as input or be found in Edcrop’s SoilParameters.horizon dictionary. Definition of default soil horizons for the soil types in Table 8 is found in Edcrop’s SoilParameters. MvG_soilhorizons dictionary.</p></td>
+</tr>
+<tr class="row-odd"><td><p>soilmodel</p></td>
+<td><p>A string specifying which soil drainage model to use,</p></td>
+<td><p>linear or Mualem – van Genuchten. ‘value’ must be lin or mvg; default is lin. Only used when wbfunc = ed (see Table 6).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Table 10</strong> A second example of “Soils” block input in edcrop.yaml file. JB1 is a predefined soil to be simulated using the Mualem- van Genuchten drainage model. JB10 is a new soil type with two horizons changed from the default of the JB1 soil.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Soils</span><span class="p">:</span>
+    <span class="n">JB1</span><span class="p">:</span>
+        <span class="n">soilmodel</span><span class="p">:</span> <span class="n">mvg</span>
+    <span class="n">JB10</span><span class="p">:</span> <span class="n">soiltype</span><span class="p">:</span> <span class="n">JB1</span>
+    <span class="c1"># The following defines two new horizons</span>
+    <span class="n">horizon</span><span class="p">:</span> <span class="p">{</span><span class="n">B_JB10</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">1.445</span><span class="p">,</span> <span class="mf">800.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span> <span class="n">C_JB10</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">1000.</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">]}</span>
+    <span class="c1"># The following defines the horizons of the JB10 soil</span>
+    <span class="n">soilhorizons</span><span class="p">:</span> <span class="p">[</span><span class="n">A_JB1</span><span class="p">,</span> <span class="n">B_JB1</span><span class="p">,</span> <span class="n">B_JB10</span><span class="p">,</span> <span class="n">C_JB10</span><span class="p">]</span>
+    <span class="n">soilmodel</span><span class="p">:</span> <span class="n">mvg</span>
+</pre></div>
+</div>
+</section>
+<section id="vegetation-types-and-parameters">
+<h3>Vegetation types and parameters<a class="headerlink" href="#vegetation-types-and-parameters" title="Link to this heading">#</a></h3>
+<p><strong>Table 11</strong> Predefined crop or vegetation types, with characterization. Notice that ‘key’ is a case sensitive name. The first ten types are taken from Olesen and Heidmann (2002).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Crop or Vegetation Description (the ‘name’)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BS</p></td>
+<td><p>Bare soil</p></td>
+</tr>
+<tr class="row-odd"><td><p>G1</p></td>
+<td><p>Grass with grazing</p></td>
+</tr>
+<tr class="row-even"><td><p>G2</p></td>
+<td><p>Grass for hay</p></td>
+</tr>
+<tr class="row-odd"><td><p>WW</p></td>
+<td><p>Winter wheat</p></td>
+</tr>
+<tr class="row-even"><td><p>SB</p></td>
+<td><p>Spring barley</p></td>
+</tr>
+<tr class="row-odd"><td><p>POT</p></td>
+<td><p>Potato</p></td>
+</tr>
+<tr class="row-even"><td><p>FB</p></td>
+<td><p>Fodder beet</p></td>
+</tr>
+<tr class="row-odd"><td><p>SR</p></td>
+<td><p>Spring rape</p></td>
+</tr>
+<tr class="row-even"><td><p>PEA</p></td>
+<td><p>Pea</p></td>
+</tr>
+<tr class="row-odd"><td><p>SBG</p></td>
+<td><p>Spring barley with grass</p></td>
+</tr>
+<tr class="row-even"><td><p>MZ</p></td>
+<td><p>Maize</p></td>
+</tr>
+<tr class="row-odd"><td><p>DF</p></td>
+<td><p>Deciduous forest</p></td>
+</tr>
+<tr class="row-even"><td><p>SF</p></td>
+<td><p>Spruce forest</p></td>
+</tr>
+<tr class="row-odd"><td><p>WL</p></td>
+<td><p>Wetland</p></td>
+</tr>
+<tr class="row-even"><td><p>WM</p></td>
+<td><p>Wet meadow</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Table 12</strong> Crop or vegetation parameters for which ‘value’ can be specified by use of ‘key’ in the “Crops” block of the edcrop.yaml input file. Notice that ‘key’ is a case sensitive name. FPN is short for ‘floating point number’.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Model Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>A descriptive name for the crop.</p></td>
+<td><p>A string.</p></td>
+</tr>
+<tr class="row-odd"><td><p>cb</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_b\)</span></p></td>
+<td><p>Bend point for relative transpiration function. List of twelve FPN’s, one for each month.</p></td>
+</tr>
+<tr class="row-even"><td><p>cr</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_r\)</span></p></td>
+<td><p>Root growth velocity during spring season. FPN.</p></td>
+</tr>
+<tr class="row-odd"><td><p>cre</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_re\)</span></p></td>
+<td><p>Root growth velocity during fall season. FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>zrv</p></td>
+<td><p><span class="math notranslate nohighlight">\(z_rv\)</span></p></td>
+<td><p>Root depth during winter season (for winter crop). FPN.</p></td>
+</tr>
+<tr class="row-odd"><td><p>zrx</p></td>
+<td><p><span class="math notranslate nohighlight">\(z_{max}\)</span></p></td>
+<td><p>Maximum root depth. FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>Lm</p></td>
+<td><p><span class="math notranslate nohighlight">\(L_m\)</span></p></td>
+<td><p>Maximum leaf area. FPN.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lv</p></td>
+<td><p><span class="math notranslate nohighlight">\(L_v\)</span></p></td>
+<td><p>Leaf area during winter (for winter crop). FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>Lc</p></td>
+<td><p><span class="math notranslate nohighlight">\(L_c\)</span></p></td>
+<td><p>Leaf area after cutting (for grass). FPN.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lym</p></td>
+<td><p><span class="math notranslate nohighlight">\(L_{ym}\)</span></p></td>
+<td><p>Yellow leaf area at maturity. FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>So</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_o\)</span></p></td>
+<td><p>Temperature sum for sprouting. FPN.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sf</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_f\)</span></p></td>
+<td><p>Temperature sum for full leaf area. FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>Sr</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_r\)</span></p></td>
+<td><p>Temperature sum for beginning of maturing. FPN.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sm</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_m\)</span></p></td>
+<td><p>Temperature sum for end of maturing. FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>Soe</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_{oe}\)</span></p></td>
+<td><p>Temperature sum for sprouting during fall (for winter crop). FPN.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sfe</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_{fe}\)</span></p></td>
+<td><p>Temperature sum for full leaf area during fall (for winter crop). FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>kcmin</p></td>
+<td><p><span class="math notranslate nohighlight">\(k_{c,min}\)</span></p></td>
+<td><p>Minimum crop coefficient. FPN.</p></td>
+</tr>
+<tr class="row-odd"><td><p>kcmax</p></td>
+<td><p><span class="math notranslate nohighlight">\(k_{c,max}\)</span></p></td>
+<td><p>Maximum crop coefficient. FPN.</p></td>
+</tr>
+<tr class="row-even"><td><p>sowdate</p></td>
+<td><p></p></td>
+<td><p>Date of sowing. Give date as explained in 1 and 2. Not used for grass crops since they are permanent.</p></td>
+</tr>
+<tr class="row-odd"><td><p>harvestdate</p></td>
+<td><p></p></td>
+<td><p>Date of harvesting. Give date as explained in 1 and 2. For crop G1, grass for grazing, this is not used since it is a permanent crop. For crop G2, grass for hay, this must be a list containing dates of cutting. For crop SBG, spring barley with grass, this must be a list with date for barley harvest, followed by date(s) of grass cutting.</p></td>
+</tr>
+<tr class="row-even"><td><p>autoharvest</p></td>
+<td><p></p></td>
+<td><p>Only for crops: a boolean specifying whether to simulate harvest automatically. Harvest will occur 7 days after Lg &lt; 0.001. ‘value’ must be true or false; default is false.</p></td>
+</tr>
+<tr class="row-odd"><td><p>leaflife</p></td>
+<td><p></p></td>
+<td><p>Only for deciduous forest: list of four dates for leaf_out_begin, leaf_out_end, leaf_loss_begin, and leaf_loss_end, respectively. Give each date as explained in 1 and 2.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol class="arabic simple">
+<li><p>A date is given in the format %Y-%m-%d; an example using this format is 2019-12-31, where first four digits give year (2019), next two digits give month (12), and last two digits give day (31).</p></li>
+<li><p>Only day and month are used, every simulated year.</p></li>
+</ol>
+</section>
+</section>
+<section id="output-variables">
+<h2>Output Variables<a class="headerlink" href="#output-variables" title="Link to this heading">#</a></h2>
+<p><strong>Table 13</strong> Possible variables that can be daily or yearly output in respective print files. Notice that ‘key’ is a case sensitive name.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Model Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Date</p></td>
+<td><p></p></td>
+<td><p>Date.</p></td>
+</tr>
+<tr class="row-odd"><td><p>T</p></td>
+<td><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
+<td><p>Temperature.</p></td>
+</tr>
+<tr class="row-even"><td><p>P</p></td>
+<td><p><span class="math notranslate nohighlight">\(P\)</span></p></td>
+<td><p>Precipitation, total.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pr</p></td>
+<td><p><span class="math notranslate nohighlight">\(P_r\)</span></p></td>
+<td><p>Precipitation falling as rain.</p></td>
+</tr>
+<tr class="row-even"><td><p>Ps</p></td>
+<td><p><span class="math notranslate nohighlight">\(P_s\)</span></p></td>
+<td><p>Precipitation falling as snow.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pm</p></td>
+<td><p><span class="math notranslate nohighlight">\(P_m\)</span></p></td>
+<td><p>Water made available by snow melt.</p></td>
+</tr>
+<tr class="row-even"><td><p>Er</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{ref}\)</span></p></td>
+<td><p>Reference evapotranspiration.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ep</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_p\)</span></p></td>
+<td><p>Potential evapotranspiration.</p></td>
+</tr>
+<tr class="row-even"><td><p>Ea</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_a\)</span></p></td>
+<td><p>Actual evapotranspiration.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Eas</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{as}\)</span></p></td>
+<td><p>Actual evaporation from snow reservoir.</p></td>
+</tr>
+<tr class="row-even"><td><p>Eae</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{ae}\)</span></p></td>
+<td><p>Actual evaporation from soil.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Eai</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{ai}\)</span></p></td>
+<td><p>Actual evaporation of intercepted water.</p></td>
+</tr>
+<tr class="row-even"><td><p>Eaig</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{aig}\)</span></p></td>
+<td><p>Actual evaporation of water intercepted on green leaves.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Eaiy</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{aiy}\)</span></p></td>
+<td><p>Actual evaporation of water intercepted on yellow leaves.</p></td>
+</tr>
+<tr class="row-even"><td><p>Eat</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{at}\)</span></p></td>
+<td><p>Actual transpiration.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ept</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{pt}\)</span></p></td>
+<td><p>Potential transpiration.</p></td>
+</tr>
+<tr class="row-even"><td><p>Epe</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{pe}\)</span></p></td>
+<td><p>Potential evaporation not attenuated by vegetation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Epc</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{pc}\)</span></p></td>
+<td><p>Potential evaporation attenuated by vegetation.</p></td>
+</tr>
+<tr class="row-even"><td><p>Epcg</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{pcg}\)</span></p></td>
+<td><p>Potential evaporation attenuated by green vegetation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Epcy</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{pcy}\)</span></p></td>
+<td><p>Potential evaporation attenuated by yellow vegetation.</p></td>
+</tr>
+<tr class="row-even"><td><p>Dr</p></td>
+<td><p><span class="math notranslate nohighlight">\(D_r\)</span></p></td>
+<td><p>Drainage from root zone to sub zone.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Db</p></td>
+<td><p><span class="math notranslate nohighlight">\(D_b\)</span></p></td>
+<td><p>Drainage from sub zone.</p></td>
+</tr>
+<tr class="row-even"><td><p>Dmp</p></td>
+<td><p><span class="math notranslate nohighlight">\(D_{mp}\)</span></p></td>
+<td><p>Drainage from macro pores.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dsum</p></td>
+<td><p>$D_{sum} = D_b + D_{mp}</p></td>
+<td><p>Sum of drainage from subzone and macro pores.</p></td>
+</tr>
+<tr class="row-even"><td><p>Qro</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_ro\)</span></p></td>
+<td><p>Surface runoff.</p></td>
+</tr>
+<tr class="row-odd"><td><p>I</p></td>
+<td><p></p></td>
+<td><p>Irrigation.</p></td>
+</tr>
+<tr class="row-even"><td><p>Tsum</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_s\)</span></p></td>
+<td><p>Temperature sum driving plant growth.</p></td>
+</tr>
+<tr class="row-odd"><td><p>L</p></td>
+<td><p>L</p></td>
+<td><p>Leaf area.</p></td>
+</tr>
+<tr class="row-even"><td><p>Lg</p></td>
+<td><p><span class="math notranslate nohighlight">\(L_g\)</span></p></td>
+<td><p>Green leaf area.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ly</p></td>
+<td><p><span class="math notranslate nohighlight">\(L_y\)</span></p></td>
+<td><p>Yellow leaf area.</p></td>
+</tr>
+<tr class="row-even"><td><p>zr</p></td>
+<td><p><span class="math notranslate nohighlight">\(z_r\)</span></p></td>
+<td><p>Root depth.</p></td>
+</tr>
+<tr class="row-odd"><td><p>kc</p></td>
+<td><p><span class="math notranslate nohighlight">\(k_c\)</span></p></td>
+<td><p>Crop coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p>Vsum</p></td>
+<td><p>$V_{sum} = V_s + V_i + V_{soil}</p></td>
+<td><p>Sum of stored water.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vdel</p></td>
+<td><p></p></td>
+<td><p>Change in stored water.</p></td>
+</tr>
+<tr class="row-even"><td><p>Vs</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_s\)</span></p></td>
+<td><p>Water stored in snow reservoir.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vi</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_i\)</span></p></td>
+<td><p>Water stored by interception.</p></td>
+</tr>
+<tr class="row-even"><td><p>Ve</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_e\)</span></p></td>
+<td><p>Water stored in evaporation zone.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vu</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_u\)</span></p></td>
+<td><p>Water stored in upper root zone.</p></td>
+</tr>
+<tr class="row-even"><td><p>Vr</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_r\)</span></p></td>
+<td><p>Water stored in root zone.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vb</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_b\)</span></p></td>
+<td><p>Water stored in sub zone.</p></td>
+</tr>
+<tr class="row-even"><td><p>Vsoil</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{soil}\)</span></p></td>
+<td><p>Water stored in soil profile (equal to rbVV+).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cu</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_u\)</span></p></td>
+<td><p>Capacity of upper root zone to store water.</p></td>
+</tr>
+<tr class="row-even"><td><p>Cr</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_r\)</span></p></td>
+<td><p>Capacity of root zone to store water.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cb</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_b\)</span></p></td>
+<td><p>Capacity of sub zone to store water.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -644,6 +1135,27 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">Inputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soil-types-and-parameters">Soil types and parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-types-and-parameters">Vegetation types and parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-variables">Output Variables</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
