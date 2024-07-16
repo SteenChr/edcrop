@@ -79,7 +79,7 @@ If the “Models” block is missing, Edcrop uses the default model setup when e
 
 In Edcrop, the edcrop.yaml file is loaded in the function named read_inp_file(…). This also stores the “Models”, “Climates”, “Soils”, and “Crops” information in respective Python dictionaries. These dictionaries are used by Edcrop to change settings and parameter values from their default as explained below.
 
-The following sub-headings give more information about the input regarding model setup, climate data, soils and crops. The sub-heading titles and content follow the block names in the edcrop.yaml file, i.e. “Models”, “Climates”, “Soils”, and “Crops”. More details about specific parameter options can be found in {doc}`tables`
+The following sub-headings give more information about the input regarding model setup, climate data, soils and crops. The sub-heading titles and content follow the block names in the edcrop.yaml file, i.e. “Models”, “Climates”, “Soils”, and “Crops”. More details about specific parameter options can be found in {doc}`tables`.
 
 ## “Models” input
 The user should use the “Models” block of the edcrop.yaml file to specify model setup and model parameter values only to the extent they need to deviate from their default. If the “Models” block is not present, Edcrop uses the default model setup when executing simulations.
@@ -88,7 +88,7 @@ As illustrated in Table 1, each sub block (indented block) of “Models” speci
 
 A sub block to a sub block (twice-indented block) specifies the desired setting or value by a key and a value, as for key “wbfunc” in Table 1. There can be several of such sub blocks to a sub block, if more than one setting or parameter needs to deviate from its default.
 
-In {doc}`tables`, Table X lists all the model settings or model parameter values that can be changed by the edcrop.yaml “Models” input. The Table also gives the respective key and type of value to be specified in the edcrop.yaml file. Table X shows a second example of “Models” block input of an edcrop.yaml file.
+In {doc}`tables`, Table 6 lists all the model settings or model parameter values that can be changed by the edcrop.yaml “Models” input. The Table also gives the respective key and type of value to be specified in the edcrop.yaml file. Table 7 shows a second example of “Models” block input of an edcrop.yaml file.
 
 In Edcrop, default model settings and parameter values are set in `ModelParameters.initialize(…)`. Changing default settings or values by using the edcrop.yaml input happens in `ModelParameters.read_initialize(…)`.
 As default, Edcrop uses “wbfunc : ed”, the alternative water balance function described in Chapter 4 of the Edcrop manual. To use the water balance function from Evacrop instead, set key and value “wbfunc: evacrop”.
@@ -147,19 +147,20 @@ Soils:
 
 The mandatory “Soils” block of the edcrop.yaml file specifies the soil types simulated during Edcrop execution.
 
-Table 4 shows an example of a “Soils” block specifying, by the first level of indented lines, that three soil types should be simulated; the soil types are named JB1, JB2, and JB1a, respectively. JB1 and JB2 are two of seven predefined soil types in Edcrop (see Chapter 7.2), while JB1a is a new soil type defined for the actual simulation. The user is free to choose any name (key) for a new soil type. During execution, Edcrop uses JB1, JB2, or JB1a, respectively, as soil case short name in the naming of output files from that simulation.
+Table 4 shows an example of a “Soils” block specifying, by the first level of indented lines, that three soil types should be simulated; the soil types are named JB1, JB2, and JB1a, respectively. JB1 and JB2 are two of seven predefined soil types in Edcrop (see {doc}`tables`), while JB1a is a new soil type defined for the actual simulation. The user is free to choose any name (key) for a new soil type. During execution, Edcrop uses JB1, JB2, or JB1a, respectively, as soil case short name in the naming of output files from that simulation.
 
 Because there are no second level indented lines following the JB1-line in Table 4, the JB1 soil is simulated using entirely default parameter values set in Edcrop.
-For the JB2 soil, a second-level indented line follows the JB2-line, having key “kqr” and value equal to 0.2. This instructs Edcrop to simulate the JB2 soil with the drainage rate $k_qr$ set equal to 0.2; for all remaining soil parameters Edcrop uses default values.
+
+For the JB2 soil, a second-level indented line follows the JB2-line, having key “kqr” and value equal to 0.2. This instructs Edcrop to simulate the JB2 soil with the drainage rate $k_{qr}$ set equal to 0.2; for all remaining soil parameters Edcrop uses default values.
 
 A new soil type needs to be defined from one of the predefined soil types. In Table 4, a new soil type, short-named JB1a, is defined from the predefined JB1 soil, which is a coarse sandy type (see {doc}`tables`). The second-level indented line following the JB1a line, using “soiltype” as key and the string “JB1” as value, instructs this. The following second-level indented lines instruct Edcrop to change some soil parameter values from the default values of the JB1 soil.
 
 As an alternative, a new soil type can be coded into Edcrop. This is done in `SoilParameters.initialize(…)`. Thereby the soil type will be “predefined” in Edcrop.
 
-In {doc}`tables`, Table X lists all the soil parameter values that can be changed by the edcrop.yaml “Soils” input. The Table also gives the respective key and type of value to be specified in the edcrop.yaml file.
-Table X shows a second example of “Soils” block input of an edcrop.yaml file.
+In {doc}`tables`, Table 6 lists all the soil parameter values that can be changed by the edcrop.yaml “Soils” input. The Table also gives the respective key and type of value to be specified in the edcrop.yaml file.
+Table 7 shows a second example of “Soils” block input of an edcrop.yaml file.
 
-As default, Edcrop uses the linear drainage model for all soil types. However, if “wbfunc: ed” in the “Models” block, the nonlinear drainage model can be chosen instead by setting “soilmodel: mvg” as illustrated in Table X ({doc}`tables`). Also, as default Edcrop uses $K_mp$ = 0, which means there is no macro pore drainage.
+As default, Edcrop uses the linear drainage model for all soil types. However, if “wbfunc: ed” in the “Models” block, the nonlinear drainage model can be chosen instead by setting “soilmodel: mvg” as illustrated in Table 9 ({doc}`tables`). Also, as default Edcrop uses $K_{mp}$ = 0, which means there is no macro pore drainage.
 
 ## “Crops” input
 The mandatory “Crops” block of the edcrop.yaml file specifies the vegetation types simulated during Edcrop execution. The “Crops” block is structured, and used by Edcrop, as described above for the “Soils” block.
@@ -169,7 +170,7 @@ Table 5 shows an example of a “Crops” block specifying, by the first level o
 In Table 5, notice that the year is 1900 in the dates for sow and harvest of WR and for “leaflife” of DF. Edcrop does not use the year; it only uses month and day for every simulated year. Therefore, an arbitrary year can be used for the value of these dates.
 
 For permanent use, a new vegetation type can be coded into Edcrop and thereby be “predefined”. This is done in `CropParameters.initialize(…)`.
-In {doc}`tables`, Table X lists all the vegetation parameter values that can be changed by the edcrop.yaml “Crops” input. The Table also gives the respective key and type of value to be specified in the edcrop.yaml file.
+In {doc}`tables`, Table 11 lists all the vegetation parameter values that can be changed by the edcrop.yaml “Crops” input. The Table also gives the respective key and type of value to be specified in the edcrop.yaml file.
 In Edcrop, default vegetation parameter values and growth models are set in `CropParameters.initialize(…)`. Changing default settings or values by using the edcrop.yaml input happens in `CropParameters.read_initialize(…)`.
 
 **Table 5** Example of “Crops” input block of edcrop.yaml file. SB and DF are predefined vegetation types for

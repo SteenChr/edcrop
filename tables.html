@@ -697,12 +697,12 @@ document.write(`
 <td><p>Water content at which macro-pore flow is initiated. FPN. Only used when both wbfunc = ed (see Table 6) and soilmodel = lin. For soilmodel = mvg, thsat is calculated internally from water content values given for the top soil horizon.</p></td>
 </tr>
 <tr class="row-odd"><td><p>horizon</p></td>
-<td><p>name <span class="math notranslate nohighlight">\(θ_s θ_r α n K_s I\)</span></p></td>
-<td><p>Definition of soil horizon, which is a dictionary with key being name given to horizon (string) and value being a list of six Mualem – van Genuchten parameter values (FPN). Only used when both wbfunc = ed (see Table 6) and soilmodel = mvg. Definition of default horizons is in Edcrop’s SoilParameters.horizon dictionary.</p></td>
+<td><p>name <span class="math notranslate nohighlight">\(θ_s\)</span> <span class="math notranslate nohighlight">\(θ_r\)</span> <span class="math notranslate nohighlight">\(α\)</span> <span class="math notranslate nohighlight">\(n\)</span> <span class="math notranslate nohighlight">\(K_s\)</span> <span class="math notranslate nohighlight">\(I\)</span></p></td>
+<td><p>Definition of soil horizon, which is a dictionary with key being name given to horizon (string) and value being a list of six Mualem – van Genuchten parameter values (FPN). Only used when both wbfunc = ed (see Table 6) and soilmodel = mvg. Definition of default horizons is in Edcrop’s <code class="docutils literal notranslate"><span class="pre">SoilParameters.horizon</span></code> dictionary.</p></td>
 </tr>
 <tr class="row-even"><td><p>soilhorizons</p></td>
 <td><p>Name of four horizons making the soil profile.</p></td>
-<td><p>List of four strings, where each string is the name of a soil horizon. Each horizon must either be given as input or be found in Edcrop’s SoilParameters.horizon dictionary. Definition of default soil horizons for the soil types in Table 8 is found in Edcrop’s SoilParameters. MvG_soilhorizons dictionary.</p></td>
+<td><p>List of four strings, where each string is the name of a soil horizon. Each horizon must either be given as input or be found in Edcrop’s <code class="docutils literal notranslate"><span class="pre">SoilParameters.horizon</span></code> dictionary. Definition of default soil horizons for the soil types in Table 8 is found in Edcrop’s <code class="docutils literal notranslate"><span class="pre">SoilParameters.MvG_soilhorizons</span></code> dictionary.</p></td>
 </tr>
 <tr class="row-odd"><td><p>soilmodel</p></td>
 <td><p>A string specifying which soil drainage model to use,</p></td>
@@ -1061,7 +1061,7 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p>Vsoil</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{soil}\)</span></p></td>
-<td><p>Water stored in soil profile (equal to rbVV+).</p></td>
+<td><p>Water stored in soil profile (equal to <span class="math notranslate nohighlight">\(V_r + V_b\)</span>).</p></td>
 </tr>
 <tr class="row-odd"><td><p>Cu</p></td>
 <td><p><span class="math notranslate nohighlight">\(C_u\)</span></p></td>
