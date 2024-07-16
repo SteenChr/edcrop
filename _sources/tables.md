@@ -121,23 +121,23 @@ Soils:
 
 **Table 11** Predefined crop or vegetation types, with characterization. Notice that ‘key’ is a case sensitive name. The first ten types are taken from Olesen and Heidmann (2002).
 
-| Type | Crop or Vegetation Description (the ‘name’) |
-|------|---------------------------------------------|
-| BS   | Bare soil                                   |
-| G1   | Grass with grazing                          |
-| G2   | Grass for hay                               |
-| WW   | Winter wheat                                |
-| SB   | Spring barley                               |
-| POT  | Potato                                      |
-| FB   | Fodder beet                                 |
-| SR   | Spring rape                                 |
-| PEA  | Pea                                         |
-| SBG  | Spring barley with grass                    |
-| MZ   | Maize                                       |
-| DF   | Deciduous forest                            |
-| SF   | Spruce forest                               |
-| WL   | Wetland                                     |
-| WM   | Wet meadow                                  |
+| Type | Crop or Vegetation Description |
+|------|--------------------------------|
+| BS   | Bare soil                      |
+| G1   | Grass with grazing             |
+| G2   | Grass for hay                  |
+| WW   | Winter wheat                   |
+| SB   | Spring barley                  |
+| POT  | Potato                         |
+| FB   | Fodder beet                    |
+| SR   | Spring rape                    |
+| PEA  | Pea                            |
+| SBG  | Spring barley with grass       |
+| MZ   | Maize                          |
+| DF   | Deciduous forest               |
+| SF   | Spruce forest                  |
+| WL   | Wetland                        |
+| WM   | Wet meadow                     |
 
 
 **Table 12** Crop or vegetation parameters for which ‘value’ can be specified by use of ‘key’ in the “Crops” block of the edcrop.yaml input file. Notice that ‘key’ is a case sensitive name. FPN is short for ‘floating point number’.
@@ -200,8 +200,8 @@ Soils:
 | Dr       | $D_r$                       | Drainage from root zone to sub zone.                                                |
 | Db       | $D_b$                       | Drainage from sub zone.                                                             |
 | Dmp      | $D_{mp}$                    | Drainage from macro pores.                                                          |
-| Dsum     | $D_{sum} = D_b + D_{mp}     | Sum of drainage from subzone and macro pores.                                       |
-| Qro      | $Q_ro$                      | Surface runoff.                                                                     |
+| Dsum     | $D_{sum} = D_b + D_{mp}$    | Sum of drainage from subzone and macro pores.                                       |
+| Qro      | $Q_{ro}$                    | Surface runoff.                                                                     |
 | I        |                             | Irrigation.                                                                         |
 | Tsum     | $S_s$                       | Temperature sum driving plant growth.                                               |
 | L        | L                           | Leaf area.                                                                          |
@@ -209,7 +209,7 @@ Soils:
 | Ly       | $L_y$                       | Yellow leaf area.                                                                   |
 | zr       | $z_r$                       | Root depth.                                                                         |
 | kc       | $k_c$                       | Crop coefficient.                                                                   |
-| Vsum     | $V_{sum} = V_s + V_i + V_{soil} | Sum of stored water.                                                            |
+| Vsum     | $V_{sum} = V_s + V_i + V_{soil}$ | Sum of stored water.                                                            |
 | Vdel     |                             | Change in stored water.                                                             |
 | Vs       | $V_s$                       | Water stored in snow reservoir.                                                     |
 | Vi       | $V_i$                       | Water stored by interception.                                                       |
