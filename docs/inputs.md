@@ -48,7 +48,7 @@ Table 2 shows another example of an edcrop.yaml file containing three blocks, ea
 
 The first block is named “Climates”. Its sub block has a key named “C1”, and this has its own sub block with key “filename” and value (text string) “climate.dat”. This instructs Edcrop, when it executes, to read the required climate data from a file named “climate.dat”. “C1” would typically be a short name that identifies the climate station.
 
-The second block is named “Soils”. It has two sub blocks named “JB1” and “JB7”, respectively. Neither of the sub blocks have its own sub block(s). This instructs Edcrop to execute sequential simulation for each of two default soil types named JB1 and JB2, respectively, without changing any soil parameter value from its default value. Soil descriptions are found below in Chapters 5.5 and 7.2.
+The second block is named “Soils”. It has two sub blocks named “JB1” and “JB7”, respectively. Neither of the sub blocks have its own sub block(s). This instructs Edcrop to execute sequential simulation for each of two default soil types named JB1 and JB2, respectively, without changing any soil parameter value from its default value.
 
 The third block is named “Crops”, having two sub blocks named “SB” and “WW”, respectively. These sub blocks also do not have own sub blocks. This instructs Edcrop to execute simulation for two default crop types named SB (spring barley) and WW (winter wheat), respectively, without changing any crop parameter value from its default value.
 
@@ -175,6 +175,7 @@ In Edcrop, default vegetation parameter values and growth models are set in `Cro
 **Table 5** Example of “Crops” input block of edcrop.yaml file. SB and DF are predefined vegetation types for
 which Edcrop during execution changes some parameter values from the default. WR is a new
 crop type defined from one of the predefined types, WW.
+
 ```
 Crops:
    SB:
