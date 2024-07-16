@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Getting Started with Edcrop &#8212; Edcrop</title>
+    <title>Wetland water balance &#8212; Edcrop</title>
   
   
   
@@ -370,7 +370,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Getting Started with Edcrop</h1>
+    <h1>Wetland water balance</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -384,18 +384,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="getting-started-with-edcrop">
-<h1>Getting Started with Edcrop<a class="headerlink" href="#getting-started-with-edcrop" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="wetland-water-balance">
+<h1>Wetland water balance<a class="headerlink" href="#wetland-water-balance" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>In this example we compare the water balances of a bare soil and a wetland, to estimate the effect of wetland vegatation on groundwater recharge.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">importlib.util</span>
- 
-<span class="c1"># specify the module that needs to be </span>
-<span class="c1"># imported relative to the path of the </span>
-<span class="c1"># module</span>
-
-
-<span class="kn">from</span> <span class="nn">edcrop</span> <span class="kn">import</span> <span class="n">edcrop</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">edcrop</span> <span class="kn">import</span> <span class="n">edcrop</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -420,13 +416,13 @@ Read input file edcrop.yaml.
 Loop through simulations.
 
  Climate data file: Weatherdata_S1.edcrop_wf.
-
- Soil parameter values:  use default.
-
- Crop parameter values:  use default.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Model parameter values:  update from input file.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Soil parameter values:  use default.
+
+ Crop parameter values:  use default.
+
+ Model parameter values:  update from input file.
   ed:
     plotseries: false
     prlistd: Date T P Ep I Ea Dsum Db Dmp
