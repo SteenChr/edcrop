@@ -1,8 +1,9 @@
 # edcrop
 
+(Edcrop Online Documentation)[https://steenchr.github.io/edcrop/home.html]
+
 Evapotranspiration is one of the major components of Earth’s water balance, being the sum of evaporation 
 and plant transpiration from the land and ocean surface. 
-
 
 Edcrop is a Python package that, using climate input, simulates field-scale evapotranspiration 
 and drainage from the root zone of an area covered with a crop, a wetland, or a forest. 
