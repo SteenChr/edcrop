@@ -7,6 +7,7 @@
 The following table supplement the model parameter input description in {doc}`inputs`.
 
 **Table 6** Model parameters for which ‘value’ can be specified by use of ’key’ in the “Models” block of the edcrop.yaml input file. Notice that ‘key’ is a case sensitive name. FPN is short for ‘floating point number’.
+<dic id="table6" />
 
 | Key            | Model parameter | Description                                                                                                     |
 |----------------|-----------------|-----------------------------------------------------------------------------------------------------------------|
@@ -47,6 +48,7 @@ The following table supplement the model parameter input description in {doc}`in
 1. Only day and month is used, every simulated year.
 
 **Table 7** A second example of “Models” block input in edcrop.yaml file. Two model runs, named M1 and M2, will be executed.
+<dic id="table7" />
 
 ```
 Models:
@@ -73,6 +75,7 @@ Models:
 ### Soil types and parameters
 
 **Table 8** Predefined soil types, with oral and quantitative characterization. Valid ‘key’ type names are JB1 to JB7. Notice that ‘key’ is a case sensitive name. The soil types are from Olesen and Heidmann (2002), who used the soil classification of Madsen and Holst (1987).
+<dic id="table8" />
 
 | Soil type Key   | Soil description            | Clay < 2 µm | Silt 2-20 µm | Fine sand 20-200 µm | Total sand 20-2000 µm |
 |-----------------|-----------------------------|-------------|--------------|---------------------|-----------------------|
@@ -85,6 +88,7 @@ Models:
 | JB7             | Clayey                      | 15-25 %     | 0-35 %       |                     | 40-85 %               |
 
 **Table 9** Soil parameters for which ‘value’ can be specified by use of ‘key’ in the “Soils” block of the edcrop.yaml input file. Notice that ‘key’ is a case sensitive name. FPN is short for ‘floating point number’.
+<dic id="table9" />
 
 | Key         | Model Parameter                                   | Description                                                                      |
 |-------------|---------------------------------------------------|----------------------------------------------------------------------------------|
@@ -104,6 +108,7 @@ Models:
 | soilmodel   | A string specifying which soil drainage model to use, | linear or Mualem – van Genuchten. ‘value’ must be lin or mvg; default is lin. Only used when wbfunc = ed (see Table 6). |
 
 **Table 10** A second example of “Soils” block input in edcrop.yaml file. JB1 is a predefined soil to be simulated using the Mualem- van Genuchten drainage model. JB10 is a new soil type with two horizons changed from the default of the JB1 soil.
+<dic id="table10" />
 
 ```
 Soils:
@@ -120,6 +125,7 @@ Soils:
 ### Vegetation types and parameters
 
 **Table 11** Predefined crop or vegetation types, with characterization. Notice that ‘key’ is a case sensitive name. The first ten types are taken from Olesen and Heidmann (2002).
+<dic id="table11" />
 
 | Type | Crop or Vegetation Description |
 |------|--------------------------------|
@@ -141,6 +147,7 @@ Soils:
 
 
 **Table 12** Crop or vegetation parameters for which ‘value’ can be specified by use of ‘key’ in the “Crops” block of the edcrop.yaml input file. Notice that ‘key’ is a case sensitive name. FPN is short for ‘floating point number’.
+<dic id="table12" />
 
 | Key         | Model Parameter                  | Description                                                                              |
 |-------------|----------------------------------|------------------------------------------------------------------------------------------|
@@ -172,8 +179,8 @@ Soils:
 
 ## Output Variables
 
-
 **Table 13** Possible variables that can be daily or yearly output in respective print files. Notice that ‘key’ is a case sensitive name.
+<dic id="table13" />
 
 | Key      | Model Variable              | Description                                                                         |
 |----------|-----------------------------|-------------------------------------------------------------------------------------|

@@ -6,7 +6,7 @@ Read input file edcrop.yaml.
 
 Loop through simulations.
 
- Climate data file: Weatherdata_S1.edcrop_wf.
+ Climate data file: Lambourn.edcrop_wf.
 
  Soil parameter values:  use default.
 
