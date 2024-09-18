@@ -11,7 +11,6 @@ For each simulation, daily and yearly water balance results are saved in two fil
 
 The first part, %1, is the climate case short name; %2 is the soil case short name; %3 is the vegetation case short name; %4 is the model case short name; and %5 is “_wb.out” for daily output and “_y_wb.out” for yearly output, respectively. The short names are taken from the edcrop.yaml input file. Hereby each filename becomes unique, and a file with results from a specific simulation is identifiable from the filename.
 
-The variables that can be printed are listed and explained in Table 13. By default, the printed variables are:
 
 &ensp;&ensp;&ensp;&ensp; T P Ep I Ea Dsum
 
@@ -21,9 +20,7 @@ It is easy to change the list of output variables by, in the right place of the 
 
 &ensp;&ensp;&ensp;&ensp; prlistd: P Ea Dsum
 
-instructs Edcrop to only print daily precipitation, actual evapotranspiration, and drainage from the sub zone. During reading of the value list, only names recognized from Table 13 in {doc}`tables` as valid variables will be used to print output. If there is no recognition of valid variables from this list, or if ‘Date’ is the only valid variable in the list, no daily output is printed.
-
-[Link to Section 2 in tables.md](tables.md###Table 12)
+instructs Edcrop to only print daily precipitation, actual evapotranspiration, and drainage from the sub zone. During reading of the value list, only names recognized from [Table 13](tables.md#table13) in {doc}`tables` as valid variables will be used to print output. If there is no recognition of valid variables from this list, or if ‘Date’ is the only valid variable in the list, no daily output is printed.
 
 The same rules apply for the key “prlisty” and the yearly output. For yearly output, ‘Date’ is not valid.
 
@@ -35,7 +32,7 @@ In the “Models” block of the edcrop.yaml file, by setting the key and value:
 
 &ensp;&ensp;&ensp;&ensp; plotseries: true
 
-Edcrop will make two PNG files, each with plots of some input and simulated variables. The first file plots precipitation (or sum of precipitation and irrigation), actual evapotranspiration, and drainage from the subzone (named P, Ea, and Db in Table 13, respectively). The other file plots temperature, root depth, leaf area, and crop coefficient (named T, zr, L, and kc in Table 13, respectively).
+Edcrop will make two PNG files, each with plots of some input and simulated variables. The first file plots precipitation (or sum of precipitation and irrigation), actual evapotranspiration, and drainage from the subzone (named P, Ea, and Db in [Table 13](tables.md#table13), respectively). The other file plots temperature, root depth, leaf area, and crop coefficient (named T, zr, L, and kc in [Table 13](tables.md#table13), respectively).
 
 &ensp;&ensp;&ensp;&ensp; %1_%2_%3_%4_%5
 
