@@ -148,7 +148,7 @@ Soils:
 ## “Soils” input
 The mandatory “Soils” block of the edcrop.yaml file specifies the soil types simulated during Edcrop execution.
 
-[Table 4](inputs.md#table4) shows an example of a “Soils” block specifying, by the first level of indented lines, that three soil types should be simulated; the soil types are named JB1, JB2, and JB1a, respectively. JB1 and JB2 are two of seven predefined soil types in Edcrop (see {doc}`tables`), while JB1a is a new soil type defined for the actual simulation. The user is free to choose any name (key) for a new soil type. During execution, Edcrop uses JB1, JB2, or JB1a, respectively, as soil case short name in the naming of output files from that simulation.
+[Table 4](inputs.md#table4) shows an example of a “Soils” block specifying, by the first level of indented lines, that three soil types should be simulated; the soil types are named JB1, JB2, and JB1a, respectively. JB1 and JB2 are two of seven predefined soil types in Edcrop (see [Table 8](tables.md#table8)), while JB1a is a new soil type defined for the actual simulation. The user is free to choose any name (key) for a new soil type. During execution, Edcrop uses JB1, JB2, or JB1a, respectively, as soil case short name in the naming of output files from that simulation.
 
 Because there are no second level indented lines following the JB1-line in [Table 4](inputs.md#table4), the JB1 soil is simulated using entirely default parameter values set in Edcrop.
 
