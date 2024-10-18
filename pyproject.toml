@@ -29,6 +29,7 @@ dynamic = ["version"]
 
 [project.urls]
 "Source Code" = "https://github.com/SteenChr/edcrop"
+"Online Documentation" = "https://steenchr.github.io/edcrop"
 
 [tool.setuptools]
 include-package-data = true
