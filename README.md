@@ -2,7 +2,7 @@
 
 [Edcrop Online Documentation](https://steenchr.github.io/edcrop/home.html)
 
-Evapotranspiration is one of the major components of Earth’s water balance, being the sum of evaporation 
+Evapotranspiration is one of the major components of Earth’s Water Balance, being the sum of evaporation 
 and plant transpiration from the land and ocean surface. 
 
 Edcrop is a Python package that, using climate input, simulates field-scale evapotranspiration 
