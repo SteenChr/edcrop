@@ -1,12 +1,12 @@
 """
 Created on Fri Nov 27 16:53:52 2015
 
-Finished March 2023.
+Finished October 2024.
 
 @author: Steen Christensen, Geoscience, Aarhus University, Denmark,
          sc@geo.au.dk, or steen@grast.dk.
          
-Full documentation: Christensen, S. (2023): 
+Full documentation: Christensen, S. (2024): 
     "Documentation of edcrop - version 1 - 
      A Python package to simulate field-scale evapotranspiration and drainage 
      from crop, wetland, or forest". Dept. of Geoscience, Aarhus University.
