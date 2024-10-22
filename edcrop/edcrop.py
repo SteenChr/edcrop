@@ -7,31 +7,37 @@ Finished March 2023.
          sc@geo.au.dk, or steen@grast.dk.
          
 Full documentation: Christensen, S. (2023): 
-    "Documentation of edcrop version 1 - 
+    "Documentation of edcrop - version 1 - 
      A Python package to simulate field-scale evapotranspiration and drainage 
-     from crop, wetland, or forest". Geoscience, Aarhus University.
+     from crop, wetland, or forest". Dept. of Geoscience, Aarhus University.
 
 
-Module to compute daily actual evapotranspiration from bare soil, crop,
-forest or wetland on basis of daily data on temperature, precipitation,
-and reference evapotranspiration as well as parameter values for soil,
-crop, and model. As a biproduct, the module also computes the daily
+Edcrop is a python package to compute daily actual evapotranspiration from 
+bare soil, crop,forest or wetland on basis of daily data on temperature, 
+precipitation,and reference evapotranspiration as well as parameter values 
+for soil, crop, and model. As a biproduct, the module also computes the daily
 percolation (drainage) from the soil profile. 
 
-Potential evapotranspiration is calculated from input reference 
-evapotranspiration. The calculation uses a seasonal crop coefficent, which is
-computed using leaf area and a single coefficient method.
+Edcrop can either be run from own script by importing it as a module, or 
+it can be run as a script.
 
-Plant growth is driven by temperature summed either from time of 
-sowing or from end of winter.
+All input to Edcrop, except the climate time series, is given in a required 
+text file which by default is named edcrop.yaml. The file is named with the 
+extension .yaml because it follows the YAML format and is processed using the 
+Python YAML module. 
 
-All model, soil and crop parameters are initialized to have values 
-that are reasonable for Danish conditions. These values can easily 
-be changed by specifying parameter name and its value separated by 
-an equal sign on a separate line in the corresponding input file.
+The daily climate data input is given in a CSV file.
 
-Models for vegetation growth and water balance were partly taken and
-modified from
+By default, Edcrop generates a log file and two output files for each 
+simulation, containing daily and yearly water balance results, respectively. 
+The user is free to choose which results are printed. 
+The users can also choose to plot some input data and simulation results and 
+save them as PNG files.
+
+A very brief summary of the simulation procedure in edcrop follows here:
+
+Some of edcrop's models for simulating vegetation growth and water balance 
+were taken and modified from
 
 Jørgen E. Olesen and Tove Heidmann (2002). EVACROP
 Et program til beregning af aktuel fordampning og afstrømning
@@ -45,28 +51,34 @@ Aslyng, H.C. & Hansen, S. (1982). Water Balance and Crop Production
 Simulation. Hydrotechnical Laboratory. The Royal Veterinary and 
 Agricultural University. Copenhagen, Denmark. 200 pp.
 
-However, an alternative water balance model is also implemented. This is 
-described in the "Documentation of edcrop".
+However, an alternative water balance model also implemented in edcrop is
+described at the end of the summary.
 
-The Evacrop based water balance model includes macropore drainage, which 
-the original Evacrop does. The alternative water balance model includes
-both macropore drainage and surface runoff.
+In edcrop, potential evapotranspiration is calculated from input reference 
+evapotranspiration. The calculation uses a seasonal crop coefficent, which is
+computed using leaf area and a single coefficient method.
 
-Growth and transpiration models were added for additional vegetation 
-types (not included in the original Evacrop): maize, deciduous forest, 
-needleleaf forest, wetland, and wet meadow. 
+Plant growth is driven solely by daily temperature cummulated either from 
+time of sowing or from end of winter.
 
-For the forest types, growth is date driven (not driven by temperature sum).
+In edcrop, the modified Evacrop model differs from the original Evacrop in 
+different ways. First, it includes macropore drainage. Secondly, it includes 
+growth and transpiration models for additional vegetation types (maize, 
+deciduous forest, needleleaf forest, wetland, and wet meadow). Thirdly, 
+irrigation can be applied either by specifying dates and rate, or by using 
+automatic irrigation. Automatic irrigation is activated when the water content 
+in the root zone becomes less than a minimum value. Irrigation only works 
+for crops.
 
-For a wetland, actual evapotranspiration equals potential
-evapotranspiration because evaporation zone and root zone are always saturated.
-A meadow is similar to a wetland except the evaporation zone is not always 
-saturated; actual evapotranspiration may therefore be less than potential 
-evapotranspiration.
+Like the original Evacrop, the Evacrop model in edcrop simulates flow through 
+the soil profile as flow through two linear reservoirs using daily time steps.
 
-Irrigation can be applied either by specifying dates and rate, or by using
-automatic irrigation, which will happen when water content becomes less than a
-minimum value. This only works for crops.
+The alternative water balance model simulates flow through the soil profile as 
+flow through four linear or nonlinear reservoirs using daily or sub-daily 
+time steps. For nonlinear reservoirs, Edcrop uses Mualem – van Genuchten like 
+functions. It also simulates gravity driven macro-pore flow as well as loss 
+of infiltration due to surface runoff.
+
 """
 
 from datetime import datetime, timedelta, date
@@ -74,10 +86,10 @@ from os.path import isfile
 
 import numpy as np
 import pandas as pd
-import yaml
+import yaml as yml
 import matplotlib.pyplot
 import matplotlib.dates as dates
-import matplotlib.ticker as ticker
+# import matplotlib.ticker as ticker
 
 
 """
@@ -667,7 +679,7 @@ class TimeSeries:
         # Upper rootzone reservoir
         Cu = mp.Cu
         Vu = mp.Vu
-        mp.Cu = min(mp.Cr,Cu) # (2.22)
+        mp.Cu = min(mp.Cr,Cu) # (2.22) Needed for shrinking rootzone
         if mp.Cu > 0.0:               # (2.23)
             mp.Vu = Vu - max(0.0,(Cu-mp.Cu)*Vu/Cu)
         else:
@@ -724,14 +736,15 @@ class TimeSeries:
                 if mp.Vu < cb*mp.Cu or mp.Vu < self.Ept[i]: # (2.44-2.45)
                     mp.Vu = 0.0
                     mp.Cu = 0.0
+            # (2.46) follows:
             if mp.Vu > 0.0 or mp.Vr > cb*mp.Cr or cd.crop_type == "WM" \
                     or cd.crop_type == "WL": # (2.46)
                 self.Eat[i] = self.Ept[i]        
             else:
-                if mp.Vr < 0.0:
-                    self.Eat[i] = 0.0
-                else:
+                if mp.Vr > 0.0:
                     self.Eat[i] = self.Ept[i]*mp.Vr/(cb*mp.Cr)
+                else:
+                    self.Eat[i] = 0.0
             self.Eat[i] = max(0.0, min(mp.Vr, self.Eat[i])) # (2.47)
         # Actual evapotranspiration
         self.Ea[i] = self.Eas[i]+self.Eae[i]+self.Eai[i]+self.Eat[i] # (2.48)
@@ -2845,7 +2858,7 @@ def print_msg(msg, fl):
     fl.write("\n"+msg)
     
 def print_dump(val, fl):
-    msg = (yaml.dump(val, indent=2, width=120)).split('\n')
+    msg = (yml.dump(val, indent=2, width=120)).split('\n')
     for i in range(0,len(msg)):
         print_msg("    "+msg[i], fl)
 
@@ -2897,10 +2910,10 @@ def read_yaml_file(fname,fi,fl):
     
     print_msg("Read input file %s."%fname,fl)
     try:
-        data = yaml.load_all(fi, Loader=yaml.FullLoader)
+        data = yml.load_all(fi, Loader=yml.FullLoader)
     except:
         print_msg("Error: Cannot load yaml input file: %s"
-                  %yaml, fl)
+                  %fname, fl)
         return(False, models, soils, crops, climates)
     
     for doc in data:
@@ -2935,7 +2948,7 @@ def run_model(yaml='edcrop.yaml', log='edcrop.log'):
     try:
         fl = open(log,'w') # Log file
     except:
-        print_msg("Error: Cannot open logfile: %s"%log, fl)
+        print("Error: Cannot open logfile: %s"%log, fl)
         return
     try:
         fi = open(yaml,'r')
