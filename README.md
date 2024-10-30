@@ -2,6 +2,8 @@
 
 [Edcrop Online Documentation](https://steenchr.github.io/edcrop/home.html)
 
+[Documentation of Edcrop - version 1](https://ebooks.au.dk/aul/catalog/book/539)
+
 Evapotranspiration is one of the major components of Earth’s Water Balance, being the sum of evaporation 
 and plant transpiration from the land and ocean surface. 
 
@@ -27,12 +29,12 @@ almost straight copy of the function used in the original Evacrop code by Olesen
 flow through the soil profile as flow through two linear reservoirs using daily time steps. However, it can simulate 
 macro-pore drainage, which the original Evacrop cannot. The second alternative simulates flow through the soil profile 
 as flow through four linear or nonlinear reservoirs using daily or sub-daily time steps. For nonlinear reservoirs, 
-edcrop.py uses Mualem – van Genuchten like functions. It also simulates gravity driven macro-pore flow as well as 
-surface runoff. 
+edcrop uses Mualem – van Genuchten like functions. It also simulates gravity driven macro-pore flow as well as 
+precipitation loss due to surface runoff. 
 
 As input, given in text files, edcrop requires daily temperature, precipitation, and reference evapotranspiration. It also 
 requires information about combination(s) of soil type and vegetation type to simulate. One can choose between seven 
 default soil types and fifteen default vegetation types, or one can manually input information for other types of soil 
-or vegetation. In a single model run, edcrop.py can loop through lists of climate files, soils, and vegetation.
+or vegetation. In a single model run, edcrop can loop through lists of climate files, soils, and vegetation.
 
-Edcrop can be imported and used in own script, or it can be executed from the command line as a script.
+Edcrop can be imported and used in own python script, or it can be executed from the command line as a script.
