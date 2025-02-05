@@ -1,0 +1,101 @@
+
+Read input file edcrop.yaml.
+
+Loop through simulations.
+
+ Climate data file: Weatherdata_S1.edcrop_wf.
+
+ Soil parameter values:  use default.
+
+ Crop parameter values:  use default.
+
+ Model parameter values:  update from input file.
+  ed:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp
+    prlisty: P Ep I Ea Dsum Db Dmp
+    wbfunc: ed
+    
+===> Run Station1_JB1_WW_ed
+
+
+ Model parameter values:  update from input file.
+  Evacrop:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    wbfunc: evacrop
+    
+===> Run Station1_JB1_WW_Evacrop
+
+
+ Crop parameter values:  use default.
+
+ Model parameter values:  update from input file.
+  ed:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp
+    prlisty: P Ep I Ea Dsum Db Dmp
+    wbfunc: ed
+    
+===> Run Station1_JB1_WM_ed
+
+
+ Model parameter values:  update from input file.
+  Evacrop:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    wbfunc: evacrop
+    
+===> Run Station1_JB1_WM_Evacrop
+
+
+ Soil parameter values:  update from input file.
+  JB7:
+    Cmp: 0.10168858
+    Kmp: 10.0
+    
+
+ Crop parameter values:  use default.
+
+ Model parameter values:  update from input file.
+  ed:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp
+    prlisty: P Ep I Ea Dsum Db Dmp
+    wbfunc: ed
+    
+===> Run Station1_JB7_WW_ed
+
+
+ Model parameter values:  update from input file.
+  Evacrop:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    wbfunc: evacrop
+    
+===> Run Station1_JB7_WW_Evacrop
+
+
+ Crop parameter values:  use default.
+
+ Model parameter values:  update from input file.
+  ed:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp
+    prlisty: P Ep I Ea Dsum Db Dmp
+    wbfunc: ed
+    
+===> Run Station1_JB7_WM_ed
+
+
+ Model parameter values:  update from input file.
+  Evacrop:
+    plotseries: false
+    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
+    wbfunc: evacrop
+    
+===> Run Station1_JB7_WM_Evacrop
