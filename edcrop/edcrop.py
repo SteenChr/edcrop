@@ -288,11 +288,8 @@ class TimeSeries:
 
         n=len(self.prlist_y)
         if n>0:
-            print(df)
 #            df2=df.resample('A',how=sum)
             df2=df.resample('A').sum(numeric_only=True) 
-            print(' ')
-            print(df2)
             colalias=[]
             for i in range(0,len(self.prlist_y)):
                 colalias.append(self.prlist_y[i].rjust(8))
