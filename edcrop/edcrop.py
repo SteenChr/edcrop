@@ -288,8 +288,11 @@ class TimeSeries:
 
         n=len(self.prlist_y)
         if n>0:
+            print(df)
 #            df2=df.resample('A',how=sum)
-            df2=df.resample('A').sum()
+            df2=df.resample('A').sum(numeric_only=True) 
+            print(' ')
+            print(df2)
             colalias=[]
             for i in range(0,len(self.prlist_y)):
                 colalias.append(self.prlist_y[i].rjust(8))
@@ -2940,10 +2943,10 @@ def run_model(yaml='edcrop.yaml', log='edcrop.log'):
     yaml is the name of the YAML input file (default is 'edcrop.yaml')
     log  is the name of the log file (default is 'edcrop.log')
     """
-#    from .version import __version__
-#    from version import __version__
-    from edcrop import version
-    __version__ = version.__version__
+    #from .version import __version__
+    #from version import __version__
+    #from edcrop import version
+    #__version__ = version.__version__
     
     try:
         fl = open(log,'w') # Log file
@@ -2957,7 +2960,7 @@ def run_model(yaml='edcrop.yaml', log='edcrop.log'):
                   %yaml, fl)
         return
 
-    print_msg("\nRunning edcrop version %s\n"%__version__, fl)
+    #print_msg("\nRunning edcrop version %s\n"%__version__, fl)
     
     # Read input file
     bool, models, soils, crops, climates = read_yaml_file(yaml,fi,fl)
