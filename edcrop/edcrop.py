@@ -289,7 +289,12 @@ class TimeSeries:
         n=len(self.prlist_y)
         if n>0:
 #            df2=df.resample('A',how=sum)
-            df2=df.resample('A').sum(numeric_only=True) 
+#            df2=df.resample('A').sum()
+# Previous statement substututed by the following (ver. 1.0.1)
+            try:
+                df2=df.resample('YE').sum(numeric_only=True)
+            except:
+                df2=df.resample('A').sum()
             colalias=[]
             for i in range(0,len(self.prlist_y)):
                 colalias.append(self.prlist_y[i].rjust(8))
@@ -362,8 +367,9 @@ class TimeSeries:
 #                         names=colnames,skiprows=1)
 #        df = pd.read_csv(fname,delim_whitespace=True, 
 #                         names=colnames,skiprows=1)
+# Change from sep='\s+|,\s*|;\s*' to raw string  sep=r'\s+|,\s*|;\s*' (ver. 1.0.1)
         df = pd.read_csv(fname,names=colnames,skiprows=1,
-                          sep='\s+|,\s*|;\s*', engine='python')
+                          sep=r'\s+|,\s*|;\s*', engine='python')
         self.date=pd.to_datetime(df.Date,format=dtformat)
         self.T=np.float64(df.Temp)
         self.P=np.float64(df.P)
@@ -521,13 +527,17 @@ class TimeSeries:
         self.Epe[i] = ((self.Ep[i]-self.Eas[i]) 
                        * np.exp(-mp.kp*self.L[i])) # (2.15)
         # Crop potential evaporation
-        self.Epc[i] = ((self.Ep[i]-self.Eas[i]) 
-                       * (1.0-np.exp(-mp.kp*self.L[i]))) # (2.16)
+#        self.Epc[i] = ((self.Ep[i]-self.Eas[i]) 
+#                       * (1.0-np.exp(-mp.kp*self.L[i]))) # (2.16)
+#        Previous statement is substituted by the following, which gives 
+#        the same (ver. 1.0.1)
+        self.Epc[i] = self.Ep[i]-self.Eas[i] - self.Epe[i]
         self.Epcg[i] = ((self.Ep[i]-self.Eas[i])
                         * (1.0-np.exp(-mp.kp*self.Lg[i]))) # (2.17)
         self.Epcy[i] = self.Epc[i] - self.Epcg[i] # (2.18)
-        if not cb < 0.0:  # Negative cb means bare soil and no transpiration
-            self.Ept[i] = self.Epcg[i] - self.Eaig[i] # (2.41)
+#       The following statement was misplaced, causing error in Ept; moved down.
+#        if not cb < 0.0:  # Negative cb means bare soil and no transpiration
+#            self.Ept[i] = self.Epcg[i] - self.Eaig[i] # (2.41)
         # Update reservoir parameters and water contents
         mp.Capacities(self.zr[i], thf, self.L[i])
         if cd.crop_type == "WL" or cd.crop_type == "WM":
@@ -543,6 +553,9 @@ class TimeSeries:
             self.Eaiy[i] = 0.0
             self.Eaig[i] = 0.0
         self.Eai[i] = self.Eaig[i] + self.Eaiy[i] # (2.40)
+#       The following statement was moved from above (ver. 1.0.1)
+        if not cb < 0.0:  # Negative cb means bare soil and no transpiration
+            self.Ept[i] = self.Epcg[i] - self.Eaig[i] # (2.41)
         # Total volume of water into soil
         PI = Pr + self.I[i] + Pm - (mp.VI-VI) 
         # Final water in interception reservoir
@@ -655,8 +668,11 @@ class TimeSeries:
         self.Epe[i] = ((self.Ep[i]-self.Eas[i]) 
                        * np.exp(-mp.kp*self.L[i])) # (2.15)
         # Crop potential evaporation
-        self.Epc[i] = ((self.Ep[i]-self.Eas[i]) 
-                       * (1.0-np.exp(-mp.kp*self.L[i]))) # (2.16)
+#        self.Epc[i] = ((self.Ep[i]-self.Eas[i]) 
+#                       * (1.0-np.exp(-mp.kp*self.L[i]))) # (2.16)
+#       Previous statement is substituted by the following, which gives 
+#       the same (ver. 1.0.1)
+        self.Epc[i] = self.Ep[i]-self.Eas[i] - self.Epe[i]
         self.Epcg[i] = ((self.Ep[i]-self.Eas[i])
                         * (1.0-np.exp(-mp.kp*self.Lg[i]))) # (2.17)
         self.Epcy[i] = self.Epc[i] - self.Epcg[i] # (2.18)
@@ -1326,6 +1342,10 @@ class CropParameters:
         called from self.read_initialize().
         """
         
+# Changed bug below, where "NF" was used unstead of "SF" for spruce forest.
+# During development, the forest type was called "needleleaf forest", or "NF".
+# (ver. 1.0.1)
+        
         self.L=0.0
         self.zr=0.0
 
@@ -1343,7 +1363,7 @@ class CropParameters:
                     "SBG": 'Spring barley with grass',
                     "MZ": 'Maize',
                     "DF": 'Deciduous forest',
-                    "NF": 'Needleleaf forest',
+                    "SF": 'Spruce (needleleaf) forest',
                     "WL": 'Wetland',
                     "WM": 'Wet meadow'
                     }
@@ -1359,6 +1379,8 @@ class CropParameters:
             elif cval != None and 'croptype' in cval.keys():
                 self.cropname = ctype
                 self.crop_type = cval['croptype']
+                msg = (" New crop %s defined from %s."%(self.cropname, self.crop_type))
+                print_msg(msg,fl)
                 if not self.crop_type in cropname.keys():
                     ctype = ctype + "/" + self.crop_type
                     raise Exception
@@ -1381,7 +1403,7 @@ class CropParameters:
             "SBG": ts.gf_2c,
             "MZ": ts.gf_sc, 
             "DF": ts.gf_df, 
-            "NF": ts.gf_nf,
+            "SF": ts.gf_nf,
             "WL": ts.gf_gi,
             "WM": ts.gf_gi
             }
@@ -1407,7 +1429,7 @@ class CropParameters:
             "SBG": np.array([0.2, 0.2, 0.2, 0.4, 0.5, 0.5, 0.5, 0.5, 0.4, 0.3, 0.2, 0.2]),
             "MZ":  np.array([0.2, 0.2, 0.2, 0.4, 0.5, 0.5, 0.5, 0.5, 0.4, 0.3, 0.2, 0.2]),
             "DF":  np.array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
-            "NF":  np.array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
+            "SF":  np.array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
             "WL":  np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]),
             "WM":  np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
             }
@@ -1427,7 +1449,7 @@ class CropParameters:
             "SBG": (15.,12.), 
             "MZ": (15.,0.), 
             "DF":  (0.,0.), 
-            "NF": (0.,0.),
+            "SF": (0.,0.),
             "WL": (12.,0.),
             "WM": (12.,0.)
             }
@@ -1448,7 +1470,7 @@ class CropParameters:
             "SBG": 200., 
             "MZ": 0., 
             "DF": 1000., 
-            "NF": 1000.,
+            "SF": 1000.,
             "WL": 1000.,
             "WM": 1000.
             }
@@ -1468,7 +1490,7 @@ class CropParameters:
             "SBG": {"JB1": 500., "JB2": 750., "JB3": 500., "JB4": 1000.,"JB5": 1000.,"JB6": 1000.,"JB7": 1000.},
             "MZ":  {"JB1": 500., "JB2": 750., "JB3": 500., "JB4": 1000.,"JB5": 1000.,"JB6": 1000.,"JB7": 1000.},
             "DF":  {"JB1": 1000.,"JB2": 1000.,"JB3": 1000.,"JB4": 1000.,"JB5": 1000.,"JB6": 1000.,"JB7": 1000.},
-            "NF":  {"JB1": 1000.,"JB2": 1000.,"JB3": 1000.,"JB4": 1000.,"JB5": 1000.,"JB6": 1000.,"JB7": 1000.},
+            "SF":  {"JB1": 1000.,"JB2": 1000.,"JB3": 1000.,"JB4": 1000.,"JB5": 1000.,"JB6": 1000.,"JB7": 1000.},
             "WL":  {"JB1": 1000.,"JB2": 1000.,"JB3": 1000.,"JB4": 1000.,"JB5": 1000.,"JB6": 1000.,"JB7": 1000.},
             "WM":  {"JB1": 1000.,"JB2": 1000.,"JB3": 1000.,"JB4": 1000.,"JB5": 1000.,"JB6": 1000.,"JB7": 1000.}
             }
@@ -1488,7 +1510,7 @@ class CropParameters:
             "SBG": {"Lm": 5.0, "Lv": 0.0, "Lc": 0.5, "Lym": 2.0},
             "MZ":  {"Lm": 3.5, "Lv": 0.0, "Lc": 0.0, "Lym": 1.0},
             "DF":  {"Lm": 6.0, "Lv": 0.5, "Lc": 0.0, "Lym": 0.5},
-            "NF":  {"Lm": 8.0, "Lv": 8.0, "Lc": 0.0, "Lym": 8.0},
+            "SF":  {"Lm": 8.0, "Lv": 8.0, "Lc": 0.0, "Lym": 8.0},
             "WL":  {"Lm": 3.0, "Lv": 1.0, "Lc": 0.0, "Lym": 0.0},
             "WM":  {"Lm": 3.0, "Lv": 1.0, "Lc": 0.0, "Lym": 0.0}
             }
@@ -1511,7 +1533,7 @@ class CropParameters:
             "SBG": {"So": 110., "Sf": 510., "Sr":  1200., "Sm":  1525., "Soe": 125., "Sfe": 425.},
             "MZ":  {"So": 110., "Sf": 800., "Sr":  1500., "Sm":  2000., "Soe":   0., "Sfe":   0.},
             "DF":  {"So":   0., "Sf":   0., "Sr":     0., "Sm":     0., "Soe":   0., "Sfe":   0.},
-            "NF":  {"So":   0., "Sf":   0., "Sr":     0., "Sm":     0., "Soe":   0., "Sfe":   0.},
+            "SF":  {"So":   0., "Sf":   0., "Sr":     0., "Sm":     0., "Soe":   0., "Sfe":   0.},
             "WL":  {"So": 125., "Sf": 425., "Sr":     0., "Sm":     0., "Soe":   0., "Sfe":   0.},
             "WM":  {"So": 125., "Sf": 425., "Sr":     0., "Sm":     0., "Soe":   0., "Sfe":   0.}
             }
@@ -1543,7 +1565,7 @@ class CropParameters:
             "SBG": {"kcmin": 1.0, "kcmax": 1.15,"kcmin1": 0.6, "kcmax1": 1.15},
             "MZ":  {"kcmin": 1.0, "kcmax": 1.15,"kcmin1": 0.6, "kcmax1": 1.15},
             "DF":  {"kcmin": .85, "kcmax": 1.05,"kcmin1": .85, "kcmax1": 1.05},
-            "NF":  {"kcmin": 1.4, "kcmax":  1.5,"kcmin1": 1.4, "kcmax1":  1.5},
+            "SF":  {"kcmin": 1.4, "kcmax":  1.5,"kcmin1": 1.4, "kcmax1":  1.5},
             "WL":  {"kcmin": 0.9, "kcmax": 1.20,"kcmin1": 0.75, "kcmax1": 1.20},
             "WM":  {"kcmin": 0.9, "kcmax": 1.20,"kcmin1": 0.75, "kcmax1": 1.20}
             }
@@ -1566,7 +1588,7 @@ class CropParameters:
             "SBG": {"sow": '19000415', "harv": '19001031'},
             "MZ":  {"sow": '19000415', "harv": '19001001'},
             "DF":  {"sow": '19000101', "harv": '19010101'},
-            "NF":  {"sow": '19000101', "harv": '19010101'},
+            "SF":  {"sow": '19000101', "harv": '19010101'},
             "WL":  {"sow": '19000101', "harv": '19010101'},
             "WM":  {"sow": '19000101', "harv": '19010101'}
             }
@@ -1611,8 +1633,14 @@ class CropParameters:
             return(True)
             
         except:
-            print_msg(("Error: Crop type = %s cannot be recognized."
-                       + " Loop to next!"%(ctype)), fl)
+#           Added more messages to print. (ver. 1.0.1)
+            msg = " Error: Crop type = %s cannot be recognized."%ctype
+            print_msg(msg, fl)
+            msg = " For new user-defined crop type, it is mandatory to define "
+            msg = msg + "its predefined type. See documentation, Chapter 5.6."
+            print_msg(msg, fl)
+            print_msg(" Loop to next crop.", fl)
+            
             return(False)
    
     def read_initialize(self, ctype, cval, ts, sd, fl):
@@ -1629,12 +1657,13 @@ class CropParameters:
         
         called from run_model().
         """
+
         
         if self.initialize(ctype, cval, ts, sd, fl):
             crop_type = self.crop_type
             if cval != None and 'croptype' in cval.keys():
                 cval.pop('croptype') # Remove item that will no longer be used
-            if cval != None:
+            if cval != None and len(cval) > 0:
                 print_msg("\n Crop parameter values:  update from input file.",
                           fl)
                 # fl.write("\n  %s"%ctype)
@@ -1753,6 +1782,8 @@ class SoilParameters:
             elif sval != None and 'soiltype' in sval.keys():
                 self.soilname = stype
                 self.soil_type = sval['soiltype']
+                msg = (" New soil %s defined from %s."%(self.soilname, self.soil_type))
+                print_msg(msg,fl)
                 if not self.soil_type in soilname.keys():
                     stype = stype + "/" + self.soil_type
                     raise Exception
@@ -1839,8 +1870,12 @@ class SoilParameters:
             self.MvG_soilhorizons = MvG_soilhorizons[self.soil_type]
 
         except:
-            strn = "Error: Soil type = %s cannot be recognized. Loop to next!" 
-            print_msg(strn%(stype), fl)
+            msg = " Error: Soil type = %s cannot be recognized."%stype
+            print_msg(msg, fl)
+            msg = " For new user-defined soil type, it is mandatory to define "
+            msg = msg + "its predefined type. See documentation, Chapter 5.5."
+            print_msg(msg, fl)
+            print_msg(" Loop to next soil.", fl)
             return(False)
             
         self.soil_model = "lin" # "mvg" # or "lin"
@@ -1865,7 +1900,7 @@ class SoilParameters:
         if self.initialize(stype, sval, fl):
             if sval != None and 'soiltype' in sval.keys():
                 sval.pop('soiltype') # Remove item that will no longer be used
-            if sval != None:
+            if sval != None and len(sval) > 0:
                 print_msg("\n Soil parameter values:  update from input file.",
                           fl)
                 # fl.write("\n  %s"%stype)
@@ -2940,10 +2975,12 @@ def run_model(yaml='edcrop.yaml', log='edcrop.log'):
     yaml is the name of the YAML input file (default is 'edcrop.yaml')
     log  is the name of the log file (default is 'edcrop.log')
     """
-    #from .version import __version__
-    #from version import __version__
-    #from edcrop import version
-    #__version__ = version.__version__
+#    from .version import __version__
+#    from version import __version__
+    from edcrop import version
+##    print("\n\nREMEMBER TO CHANGE in run_model() 'import version'!!!\n\n")
+##    import version
+    __version__ = version.__version__
     
     try:
         fl = open(log,'w') # Log file
@@ -2957,7 +2994,7 @@ def run_model(yaml='edcrop.yaml', log='edcrop.log'):
                   %yaml, fl)
         return
 
-    #print_msg("\nRunning edcrop version %s\n"%__version__, fl)
+    print_msg("\nRunning edcrop version %s\n"%__version__, fl)
     
     # Read input file
     bool, models, soils, crops, climates = read_yaml_file(yaml,fi,fl)
@@ -2982,6 +3019,8 @@ def run_model(yaml='edcrop.yaml', log='edcrop.log'):
                     if not cd.read_initialize(crop, crops[crop], ts, 
                                               sd, fl):
                         continue
+# Following was added to fix bug for simulating crop SBG for a sequence of models (ver 1.0.1)                    
+                    harvestdate = cd.harvestdate
                     for model in models:
                         ts.initialize() # Initialize time series variables
                         # Set up model amd set model parameter values
@@ -3003,6 +3042,8 @@ def run_model(yaml='edcrop.yaml', log='edcrop.log'):
                             cb = cd.cb[month]
                             mp.wbfunc(mp, sd.thf, cb, sd.kqr, sd.kqb, cd, 
                                       i)
+# Following was added to fix bug for simulating crop SBG for a sequence of models (ver 1.0.1)
+                        cd.harvestdate = harvestdate
             
                         # Write and plot output
                         begin_name = (clim + "_" + soil + "_" + crop + "_"
@@ -3012,3 +3053,7 @@ def run_model(yaml='edcrop.yaml', log='edcrop.log'):
                             ts.plot_time_series(sd.soilname, cd.cropname, 
                                                 begin_name)
     fl.close() # Close log file
+
+
+
+## run_model()

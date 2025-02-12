@@ -11,3 +11,5 @@ chapters:
 - file: tables
 - file: notebooks-collection
 - file: citations
+- file: utilities
+- file: changelog
