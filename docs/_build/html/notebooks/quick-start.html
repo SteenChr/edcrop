@@ -414,109 +414,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running edcrop version 0.0.6
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#import necessary packages and set paths to .yaml file.</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#the location of the climatic data is given in the yaml file.</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">edcrop</span> <span class="kn">import</span> <span class="n">edcrop</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-Read input file edcrop.yaml.
-
-Loop through simulations.
-
- Climate data file: Weatherdata_S1.edcrop_wf.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Soil parameter values:  use default.
-
- Crop parameter values:  use default.
-
- Model parameter values:  update from input file.
-  ed:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp
-    prlisty: P Ep I Ea Dsum Db Dmp
-    wbfunc: ed
-    
-===&gt; Run Station1_JB1_WW_ed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Model parameter values:  update from input file.
-  Evacrop:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
-    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
-    wbfunc: evacrop
-    
-===&gt; Run Station1_JB1_WW_Evacrop
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Crop parameter values:  use default.
-
- Model parameter values:  update from input file.
-  ed:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp
-    prlisty: P Ep I Ea Dsum Db Dmp
-    wbfunc: ed
-    
-===&gt; Run Station1_JB1_WM_ed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Model parameter values:  update from input file.
-  Evacrop:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
-    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
-    wbfunc: evacrop
-    
-===&gt; Run Station1_JB1_WM_Evacrop
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Soil parameter values:  update from input file.
-  JB7:
-    Cmp: 0.10168858
-    Kmp: 10.0
-    
-
- Crop parameter values:  use default.
-
- Model parameter values:  update from input file.
-  ed:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp
-    prlisty: P Ep I Ea Dsum Db Dmp
-    wbfunc: ed
-    
-===&gt; Run Station1_JB7_WW_ed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Model parameter values:  update from input file.
-  Evacrop:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
-    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
-    wbfunc: evacrop
-    
-===&gt; Run Station1_JB7_WW_Evacrop
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Crop parameter values:  use default.
-
- Model parameter values:  update from input file.
-  ed:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp
-    prlisty: P Ep I Ea Dsum Db Dmp
-    wbfunc: ed
-    
-===&gt; Run Station1_JB7_WM_ed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Model parameter values:  update from input file.
-  Evacrop:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp Ve Vr Vb
-    prlisty: P Ep I Ea Dsum Db Dmp Ve Vr Vb
-    wbfunc: evacrop
-    
-===&gt; Run Station1_JB7_WM_Evacrop
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;edcrop&#39;
 </pre></div>
 </div>
 </div>
