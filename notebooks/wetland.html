@@ -187,6 +187,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tables.html">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks-collection.html">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 
     </div>
@@ -411,39 +413,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running edcrop version 0.0.6
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">edcrop</span> <span class="kn">import</span> <span class="n">edcrop</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-Read input file edcrop.yaml.
-
-Loop through simulations.
-
- Climate data file: Lambourn.edcrop_wf.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Soil parameter values:  use default.
-
- Crop parameter values:  use default.
-
- Model parameter values:  update from input file.
-  ed:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp
-    prlisty: P Ep I Ea Dsum Db Dmp
-    wbfunc: ed
-    
-===&gt; Run Station1_JB1_BS_ed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Crop parameter values:  use default.
-
- Model parameter values:  update from input file.
-  ed:
-    plotseries: false
-    prlistd: Date T P Ep I Ea Dsum Db Dmp
-    prlisty: P Ep I Ea Dsum Db Dmp
-    wbfunc: ed
-    
-===&gt; Run Station1_JB1_WL_ed
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;edcrop&#39;
 </pre></div>
 </div>
 </div>
